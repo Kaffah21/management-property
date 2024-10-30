@@ -5,9 +5,12 @@ use App\Http\Controllers\MasterController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\AdminController;
-use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\VillaController as AdminVillaController;
+use App\Http\Controllers\Admin\RumahController as AdminRumahController;
+use App\Http\Controllers\RumahController;
+use App\Http\Controllers\VillaController;
 
 
 
@@ -48,10 +51,21 @@ Route::post('/admin/login', [AdminController::class, 'login'])->name('admin.logi
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth');
 Route::prefix('admin')->name('admin.')->group(function () {
     // Routes for Properti Rumah
-    Route::get('/properti-rumah', [PropertyController::class, 'index'])->name('rumah.index');
+    // Route::get('/properti-rumah', [PropertyController::class, 'index'])->name('rumah.index');
 
     // Routes for Properti Villa
-    Route::get('/properti-villa', [PropertyController::class, 'villaIndex'])->name('villa.index');
+    // Route::get('/properti-villa', [PropertyController::class, 'villaIndex'])->name('villa.index');
 
     // Add other routes related to admin if necessary
 });
+Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
+    Route::resource('villas', AdminVillaController::class);
+});
+Route::get('villas', [VillaController::class, 'index'])->name('villas.index');
+Route::get('villas/{villa}', [VillaController::class, 'show'])->name('villas.show');
+//add property home
+Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
+    Route::resource('rumah', AdminRumahController::class);
+});
+// Route::get('rumah', [RumahController::class, 'index'])->name('rumah.index');
+// Route::get('rumah/{rumah}', [RumahController::class, 'show'])->name('rumah.show');
