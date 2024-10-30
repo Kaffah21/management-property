@@ -24,7 +24,7 @@
             @endif
 
             <!-- Login form -->
-            <form action="{{ route('actionlogin') }}" method="post">
+            <form action="{{ route('login') }}" method="post">
                 @csrf
                 <div class="mb-4">
                     <label for="email" class="block text-sm font-medium text-gray-700">Email</label>

@@ -6,14 +6,30 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
 
 
-Route::get('/', function () {
+
+
+Route::get('/', function () {  
     return view('master');
 });
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
 
-Route::get('/', [LoginController::class, ' login'])->name('login');
-Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('master');
+})->name('logout');
+
 
 Route::get('master', [MasterController::class, 'index'])->name('master')->middleware('auth');
 Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
