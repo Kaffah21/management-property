@@ -12,8 +12,10 @@ class VillaController extends Controller
         return view('villas.index', compact('villas'));
     }
 
-    public function show(Villa $villa)
+    public function show($id)
     {
-      return view('villa.show',compact('villa'));
+        $villa = Villa::findOrFail($id);
+        return view('villas.show', compact('villa'));
     }
+    
 }

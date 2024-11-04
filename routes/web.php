@@ -44,28 +44,34 @@ Route::get('/register', [RegisterController::class, 'create'])->name('register')
 Route::post('/register', [RegisterController::class, 'store']);
 $user = Auth::user(); 
 
+Route::get('villas', [VillaController::class, 'index'])->name('villas.index');
+Route::get('villas/{villa}', [VillaController::class, 'show'])->name('villas.show');
 
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+
+
+
+// ROUTE ADMIN
 
 Route::get('/admin/login', [AdminController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AdminController::class, 'login'])->name('admin.login.submit');
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth');
 Route::prefix('admin')->name('admin.')->group(function () {
-    // Routes for Properti Rumah
-    // Route::get('/properti-rumah', [PropertyController::class, 'index'])->name('rumah.index');
-
-    // Routes for Properti Villa
-    // Route::get('/properti-villa', [PropertyController::class, 'villaIndex'])->name('villa.index');
-
-    // Add other routes related to admin if necessary
+   
 });
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
     Route::resource('villas', AdminVillaController::class);
 });
-Route::get('villas', [VillaController::class, 'index'])->name('villas.index');
-Route::get('villas/{villa}', [VillaController::class, 'show'])->name('villas.show');
+
 //add property home
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
     Route::resource('rumah', AdminRumahController::class);
 });
-// Route::get('rumah', [RumahController::class, 'index'])->name('rumah.index');
-// Route::get('rumah/{rumah}', [RumahController::class, 'show'])->name('rumah.show');
+Route::get('/admin/rumah/{rumah}/edit', [RumahController::class, 'edit'])->name('admin.rumah.edit'); // Untuk menampilkan formulir edit
+Route::patch('/admin/rumah/{rumah}', [RumahController::class, 'update'])->name('admin.rumah.update'); // Untuk mengirim data pembaruan
+
+Route::get('rumah', [RumahController::class, 'index'])->name('rumahs.index');
+Route::get('rumah/{rumah}', [RumahController::class, 'show'])->name('rumahs.show');

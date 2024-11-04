@@ -8,10 +8,10 @@
         <!-- Centered Links for Desktop -->
         <div class="hidden md:flex flex-1 justify-center space-x-6">
             <a href="{{ route('master') }}" class="text-black hover:text-gray font-semibold">Home</a>
-            <a href="" class="text-black hover:text-gray font-semibold">Properti Rumah</a>
+            <a href="{{route('rumahs.index')}}" class="text-black hover:text-gray font-semibold">Properti Rumah</a>
             <a href="{{route('villas.index')}}" class="text-black hover:text-gray font-semibold">Properti Villa</a>
             <a href="#" class="text-black hover:text-gray font-semibold">Contact Us</a>
-            <a href="#" class="text-black hover:text-gray font-semibold">About Us</a>
+            <a href="{{url('about')}}" class="text-black hover:text-gray font-semibold">About Us</a>
         </div>
 
         <div class="flex items-center space-x-4">
@@ -52,10 +52,10 @@
     <div class="md:hidden hidden" id="mobile-menu">
         <div class="flex flex-col items-center mt-2">
             <a href="{{ route('master') }}" class="text-black hover:text-gray font-semibold py-2">Home</a>
-            <a href="#" class="text-black hover:text-gray font-semibold py-2">Properti Rumah</a>
+            <a href="{{route('rumahs.index')}}" class="text-black hover:text-gray font-semibold py-2">Properti Rumah</a>
             <a href="{{route('villas.index')}}" class="text-black hover:text-gray font-semibold py-2">Properti Villa</a>
             <a href="#" class="text-black hover:text-gray font-semibold py-2">Contact Us</a>
-            <a href="#" class="text-black hover:text-gray font-semibold py-2">About Us</a>
+            <a href="{{url('about')}}" class="text-black hover:text-gray font-semibold py-2">About Us</a>
             <div class="flex items-center space-x-4">
                 @guest
                     <a href="{{ route('login') }}" class="text-blue-500">Login</a>

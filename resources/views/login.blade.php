@@ -12,8 +12,14 @@
 
 <body class="bg-gray-100">
 
-    <div class="container mx-auto">
-        <div class="max-w-md mx-auto mt-20 bg-white p-8 rounded-lg shadow-lg">
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/assets/villa.jpg');">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+    </div>
+
+    <!-- Login Form Container -->
+    <div class="relative z-10 flex items-center justify-center min-h-screen">
+        <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-lg mx-auto">
             <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Login</h2>
 
             <!-- Display error if exists -->
@@ -43,7 +49,6 @@
         </div>
     </div>
 
-    <!-- Optional: Tailwind JS for extra functionality -->
 </body>
 
 </html>
