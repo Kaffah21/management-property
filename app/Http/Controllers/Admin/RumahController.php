@@ -50,52 +50,41 @@ class RumahController extends Controller
         return redirect()->route('admin.rumah.index')->with('success', 'Rumah created successfully.');
     }
 
-    public function edit(Rumah $rumah)
+    public function edit($id)
     {
-        return view('admin.rumah.edit', compact('rumah'));
+        $property = Rumah::findOrFail($id);
+        return view('admin.rumah.edit', compact('property'));
     }
-
-    public function update(Request $request, Rumah $rumah)
+    
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'nama' => 'required',
+        $property = Rumah::findOrFail($id);
+    
+        $validatedData = $request->validate([
+            'nama' => 'required|string|max:255',
             'harga' => 'required|numeric',
-            'lokasi' => 'required',
-            'rating' => 'required|numeric|min:0|max:5',
-            'deskripsi' => 'required',
-            'gambar' => 'image|mimes:jpeg,png,jpg|max:2048'
+            'lokasi' => 'required|string|max:255',
+            'rating' => 'nullable|numeric|min:0|max:5',
+            'deskripsi' => 'nullable|string',
+            'gambar' => 'nullable|image|max:2048', // Optional, validate file type and size
         ]);
-
+    
         if ($request->hasFile('gambar')) {
-            Storage::delete('public/rumah/' . $rumah->gambar);
-            $gambar = $request->file('gambar');
-            $gambar->storeAs('public/rumah', $gambar->hashName());
-
-            $rumah->update([
-                'nama' => $request->nama,
-                'harga' => $request->harga,
-                'lokasi' => $request->lokasi,
-                'rating' => $request->rating,
-                'deskripsi' => $request->deskripsi,
-                'gambar' => $gambar->hashName()
-            ]);
-        } else {
-            $rumah->update([
-                'nama' => $request->nama,
-                'harga' => $request->harga,
-                'lokasi' => $request->lokasi,
-                'rating' => $request->rating,
-                'deskripsi' => $request->deskripsi
-            ]);
+            // Handle file upload
+            $filePath = $request->file('gambar')->store('public/rumah');
+            $validatedData['gambar'] = str_replace('public/', '', $filePath);
         }
-
-        return redirect()->route('admin.rumah.index')->with('success', 'Rumah berhasil diupdate');
+    
+        $property->update($validatedData);
+    
+        return redirect()->route('admin.rumah.index')->with('success', 'Home property updated successfully.');
     }
+    
 
     public function destroy(Rumah $rumah)
     {
         Storage::delete('public/rumah/' . $rumah->gambar);
         $rumah->delete();
-        return redirect()->route('admin.rumah.index')->with('success', 'Rumah berhasil dihapus');
+        return redirect()->route('admin.rumah.index')->with('success', 'Home property delete successfully');
     }
 }

@@ -52,10 +52,12 @@ class VillaController extends Controller
     
     
 
-    public function edit(Villa $villa)
+    public function edit($id)
     {
+        $villa = Villa::findOrFail($id);
         return view('admin.villas.edit', compact('villa'));
     }
+    
 
     public function update(Request $request, Villa $villa)
     {

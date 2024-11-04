@@ -11,6 +11,9 @@ use App\Http\Controllers\Admin\VillaController as AdminVillaController;
 use App\Http\Controllers\Admin\RumahController as AdminRumahController;
 use App\Http\Controllers\RumahController;
 use App\Http\Controllers\VillaController;
+use App\Http\Controllers\Admin\PemilikController as PemilikController;
+use App\Http\Controllers\Admin\PenyewaController as PenyewaController;
+
 
 
 
@@ -46,6 +49,8 @@ $user = Auth::user();
 
 Route::get('villas', [VillaController::class, 'index'])->name('villas.index');
 Route::get('villas/{villa}', [VillaController::class, 'show'])->name('villas.show');
+Route::get('rumah', [RumahController::class, 'index'])->name('rumahs.index');
+Route::get('rumah/{rumah}', [RumahController::class, 'show'])->name('rumahs.show');
 
 Route::get('/about', function () {
     return view('about');
@@ -70,8 +75,17 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
     Route::resource('rumah', AdminRumahController::class);
 });
-Route::get('/admin/rumah/{rumah}/edit', [RumahController::class, 'edit'])->name('admin.rumah.edit'); // Untuk menampilkan formulir edit
+Route::get('/admin/rumah/{id}/edit', [RumahController::class, 'edit'])->name('admin.rumah.edit');
 Route::patch('/admin/rumah/{rumah}', [RumahController::class, 'update'])->name('admin.rumah.update'); // Untuk mengirim data pembaruan
 
-Route::get('rumah', [RumahController::class, 'index'])->name('rumahs.index');
-Route::get('rumah/{rumah}', [RumahController::class, 'show'])->name('rumahs.show');
+
+
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::resource('penyewa', PenyewaController::class);
+    Route::resource('pemilik', PemilikController::class);
+});
+
+
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::resource('pemilik', PemilikController::class);
+});
