@@ -1,18 +1,18 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Models\Rumah;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-
 class RumahController extends Controller
 {
     public function index()
     {
-        $rumah = Rumah::latest()->paginate(10);
-        return view('admin.rumah.index', compact('rumah'));
+        $rumahs = Rumah::paginate(10); // Menampilkan 10 data per halaman
+        return view('admin.rumah.index', compact('rumahs'));
     }
 
     public function create()
@@ -30,27 +30,25 @@ class RumahController extends Controller
             'deskripsi' => 'nullable|string',
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validation rules
         ]);
-    
+
         $rumah = new Rumah();
         $rumah->nama = $request->nama;
         $rumah->harga = $request->harga;
         $rumah->lokasi = $request->lokasi;
         $rumah->rating = $request->rating;
         $rumah->deskripsi = $request->deskripsi;
-    
+
         // Handle the image upload
         if ($request->hasFile('gambar')) {
             $imageName = time() . '.' . $request->gambar->extension();
             $request->gambar->storeAs('rumah', $imageName, 'public'); 
             $rumah->gambar = $imageName; // Save the filename in the database
         }
-    
+
         $rumah->save();
-    
+
         return redirect()->route('admin.rumah.index')->with('success', 'Rumah created successfully.');
     }
-    
-    
 
     public function edit(Rumah $rumah)
     {
@@ -67,12 +65,12 @@ class RumahController extends Controller
             'deskripsi' => 'required',
             'gambar' => 'image|mimes:jpeg,png,jpg|max:2048'
         ]);
-    
+
         if ($request->hasFile('gambar')) {
             Storage::delete('public/rumah/' . $rumah->gambar);
             $gambar = $request->file('gambar');
             $gambar->storeAs('public/rumah', $gambar->hashName());
-    
+
             $rumah->update([
                 'nama' => $request->nama,
                 'harga' => $request->harga,
@@ -90,14 +88,14 @@ class RumahController extends Controller
                 'deskripsi' => $request->deskripsi
             ]);
         }
-    
+
         return redirect()->route('admin.rumah.index')->with('success', 'Rumah berhasil diupdate');
     }
 
-    public function destroy(rumah $rumah)
+    public function destroy(Rumah $rumah)
     {
-        Storage::delete('public/rumah/'.$rumah->gambar);
+        Storage::delete('public/rumah/' . $rumah->gambar);
         $rumah->delete();
-        return redirect()->route('admin.rumah.index')->with('success', 'rumah berhasil dihapus');
+        return redirect()->route('admin.rumah.index')->with('success', 'Rumah berhasil dihapus');
     }
 }

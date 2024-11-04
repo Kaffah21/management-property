@@ -27,7 +27,7 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach($rumah as $rumah)
+                    @foreach($rumahs as $rumah)
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $loop->iteration }}</td>
                         <td class="px-6 py-4 whitespace-nowrap"><img src="{{ Storage::url('rumah/'.$rumah->gambar) }}" width="100"></td>
@@ -57,7 +57,7 @@
                     @endforeach
                 </tbody>
             </table>
-            {{ $rumah->links() }}
+            {{ $rumahs->links() }}
         </div>
     </div>
 </div>
