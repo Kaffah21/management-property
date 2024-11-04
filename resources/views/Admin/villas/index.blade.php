@@ -4,9 +4,9 @@
 <div class="container mx-auto p-6">
     <div class="bg-white shadow-md rounded-lg overflow-hidden">
         <div class="bg-gray-100 p-4 flex justify-between items-center">
-            <h3 class="text-xl font-semibold">Daftar Villa</h3>
+            <h3 class="text-xl font-semibold">List Villa</h3>
             <a href="{{ route('admin.villas.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 flex items-center">
-                <i class="fas fa-plus mr-2"></i> Tambah Villa
+                <i class="fas fa-plus mr-2"></i> Add villa
             </a>
         </div>
         <div class="p-6">

@@ -17,12 +17,12 @@
             <!-- Right Section: Links -->
             <div class="w-1/2 flex flex-col items-end">
                 <div class="mb-2">
-                    <a href="#" class="text-gray-400 hover:text-gray-300">Home</a>
-                    <a href="#" class="text-gray-400 hover:text-gray-300">Rumah</a>
-                    <a href="#" class="text-gray-400 hover:text-gray-300">Villa</a>
-                    <a href="#" class="text-gray-400 hover:text-gray-300">Contact Us</a>
-                    <a href="#" class="text-gray-400 hover:text-gray-300">About</a>
-                    <a href="#" class="text-gray-400 hover:text-gray-300">Join</a>
+                    <a href="{{ route('master') }}" class="text-gray-400 hover:text-gray-300">Home</a>
+                    <a href="{{ route('rumahs.index') }}" class="text-gray-400 hover:text-gray-300">Rumah</a>
+                    <a href="{{ route('villas.index') }}" class="text-gray-400 hover:text-gray-300">Villa</a>
+                    <a href="{{url('contact')}}" class="text-gray-400 hover:text-gray-300">Contact Us</a>
+                    <a href="{{ url('about') }}" class="text-gray-400 hover:text-gray-300">About</a>
+                    <a href="{{ url('join') }}" class="text-gray-400 hover:text-gray-300">Join</a>
 
 
                 </div>
