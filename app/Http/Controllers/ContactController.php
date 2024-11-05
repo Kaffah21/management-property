@@ -9,7 +9,7 @@ class ContactController extends Controller
 {
     public function showForm()
     {
-        return view('contact-us'); // Pastikan Anda memiliki view ini
+        return view('contact-us'); 
     }
 
     public function submitForm(Request $request)
@@ -27,7 +27,7 @@ class ContactController extends Controller
         ];
 
         Mail::send('emails.contact-request', $details, function($message) use ($details) {
-            $message->to('recipient@example.com') // Ganti dengan email penerima
+            $message->to('kaffahsilmi217@gmail.com') 
                     ->subject('New Contact Request');
             $message->from($details['email'], $details['name']);
         });
