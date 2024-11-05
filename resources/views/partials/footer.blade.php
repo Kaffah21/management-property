@@ -33,7 +33,7 @@
                     <a href="#" class="text-white hover:text-gray-400" aria-label="Twitter">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="https://www.instagram.com/kffh217" class="text-white hover:text-gray-400" aria-label="Instagram">
+                    <a href="https://www.instagram.com/kffh_217" class="text-white hover:text-gray-400" aria-label="Instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
                     <a href="https://www.linkedin.com/in/kaffah-ms-944088321?" class="text-white hover:text-gray-400" aria-label="LinkedIn">

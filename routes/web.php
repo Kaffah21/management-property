@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\VillaController as AdminVillaController;
 use App\Http\Controllers\Admin\RumahController as AdminRumahController;
 use App\Http\Controllers\RumahController;
 use App\Http\Controllers\VillaController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\PemilikController as PemilikController;
 use App\Http\Controllers\Admin\PenyewaController as PenyewaController;
 
@@ -55,6 +56,9 @@ Route::get('rumah/{rumah}', [RumahController::class, 'show'])->name('rumahs.show
 Route::get('/about', function () {
     return view('about');
 })->name('about');
+
+Route::get('/contact-us', [ContactController::class, 'showForm'])->name('contact.show');
+Route::post('/contact-us', [ContactController::class, 'submitForm'])->name('contact.submit');
 
 
 

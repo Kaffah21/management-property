@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
 </head>
 
 <body class="bg-gray-100">
@@ -24,21 +25,45 @@
     <div class="flex">
         <div id="sidebar" class="w-64 bg-gray-800 text-white h-screen p-5 fixed transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
             <a href="{{ route('admin.dashboard') }}" class="flex items-center mb-4">
-                <img src="/assets/logo.png" alt="Logo" class="h-10 mr-2">
+                <img src="/assets/logo.png" alt="Logo" class="h-14 mr-2">
             </a> 
-            <ul>
-                <li class="mb-2"><a href="{{ route('admin.dashboard') }}"
-                        class="text-white hover:bg-gray-700 rounded-lg p-2 block">Dashboard</a></li>
-                <li class="mb-2"><a href="{{ route('admin.rumah.index') }}"
-                        class="text-white hover:bg-gray-700 rounded-lg p-2 block">Properti Rumah</a></li>
-                <li class="mb-2"><a href="{{ route('admin.villas.index') }}"
-                        class="text-white hover:bg-gray-700 rounded-lg p-2 block">Properti Villa</a></li>
-                <li class="mb-2"><a href="{{ route('admin.penyewa.index') }}"
-                        class="text-white hover:bg-gray-700 rounded-lg p-2 block">Data Penyewa</a></li>
-                <li class="mb-2"><a href="{{ route('admin.pemilik.index') }}"
-                        class="text-white hover:bg-gray-700 rounded-lg p-2 block">Data Pemilik property</a></li>
-                <li class="mb-2"><a href="{{ route('actionlogout') }}"
-                        class="text-red-400 hover:bg-gray-700 rounded-lg p-2 block">Logout</a></li>
+            <ul style="margin-top: 50px">
+                <li class="mb-2">
+                    <a href="{{ route('admin.dashboard') }}" class="text-white hover:bg-gray-700 rounded-lg p-2 block">
+                        <i class="fas fa-tachometer-alt mr-2"></i> 
+                        Dashboard
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="{{ route('admin.rumah.index') }}" class="text-white hover:bg-gray-700 rounded-lg p-2 block">
+                        <i class="fas fa-home mr-2"></i> 
+                        Properti Home
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="{{ route('admin.villas.index') }}" class="text-white hover:bg-gray-700 rounded-lg p-2 block">
+                        <i class="fas fa-building mr-2"></i> 
+                        Properti Villa
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="{{ route('admin.penyewa.index') }}" class="text-white hover:bg-gray-700 rounded-lg p-2 block">
+                        <i class="fas fa-user-friends mr-2"></i> 
+                        Tenant Data
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="{{ route('admin.pemilik.index') }}" class="text-white hover:bg-gray-700 rounded-lg p-2 block">
+                        <i class="fas fa-user-tie mr-2"></i> 
+                        Owner Data
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a href="{{ route('actionlogout') }}" class="text-red-400 hover:bg-gray-700 rounded-lg p-2 block">
+                        <i class="fas fa-sign-out-alt mr-2"></i> 
+                        Logout
+                    </a>
+                </li>
             </ul>
         </div>
 

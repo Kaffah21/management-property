@@ -6,7 +6,7 @@
         <div class="bg-gray-100 p-4 flex justify-between items-center">
             <h3 class="text-xl font-semibold">List Tenants</h3>
             <a href="{{ route('admin.penyewa.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 flex items-center">
-                <i class="fas fa-plus mr-2"></i> Add Tenants
+                <i class="fas fa-plus fs-2 mr-2"></i> Add Tenants
             </a>
         </div>
         <div class="p-6">
@@ -31,8 +31,8 @@
                         <td class="px-6 py-4 whitespace-nowrap">{{ $item->address }}</td>
                         <td class="px-6 py-4 whitespace-nowrap flex space-x-4">
                             <div class="relative group">
-                                <a href="{{ route('admin.penyewa.edit', $item->id) }}" class="bg-blue-600 text-white px-3 py-1 rounded-md hover:bg-blue-500 flex items-center" aria-label="Edit Penyewa">
-                                    <i class="fas fa-edit" aria-hidden="true"></i>
+                                <a href="{{ route('admin.penyewa.edit', $item->id) }}" class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 flex items-center" aria-label="Edit Penyewa">
+                                    <i class="fas fa-pencil-alt fs-2"></i>
                                     <span class="absolute left-1/2 transform -translate-x-1/2 -mt-10 w-max bg-gray-800 text-white text-xs rounded-md p-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">Edit</span>
                                 </a>
                             </div>
@@ -40,7 +40,7 @@
                                 <form action="{{ route('admin.penyewa.destroy', $item->id) }}" method="POST" class="inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="bg-red-600 text-white px-3 py-1 rounded-md hover:bg-red-500 flex items-center" onclick="return confirm('Yakin ingin menghapus?')" aria-label="Hapus Penyewa">
+                                    <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 flex items-center" onclick="return confirm('Yakin ingin menghapus?')" aria-label="Hapus Penyewa">
                                         <i class="fas fa-trash" aria-hidden="true"></i>
                                         <span class="absolute left-1/2 transform -translate-x-1/2 -mt-10 w-max bg-gray-800 text-white text-xs rounded-md p-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">Hapus</span>
                                     </button>
