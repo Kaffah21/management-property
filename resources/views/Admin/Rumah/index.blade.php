@@ -38,7 +38,7 @@
                         <td class="px-6 py-4 whitespace-nowrap flex space-x-4">
                             <div class="relative group">
                                 <a href="{{ route('admin.rumah.edit', $rumah) }}" class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 flex items-center">
-                                    <i class="fas fa-edit"></i>
+                                    <i class="fas fa-pencil-alt fs-2"></i>
                                     <span class="absolute left-1/2 transform -translate-x-1/2 -mt-10 w-max bg-gray-800 text-white text-xs rounded-md p-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">Edit</span>
                                 </a>
                             </div>

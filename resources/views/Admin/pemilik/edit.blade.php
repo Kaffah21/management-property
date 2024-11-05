@@ -62,8 +62,8 @@
                 </div>
 
                 <div class="flex justify-between mt-5">
-                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Update</button>
                     <a href="{{ route('admin.pemilik.index') }}" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400">Cancel</a>
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Update</button>
                 </div>
             </form>
         </div>

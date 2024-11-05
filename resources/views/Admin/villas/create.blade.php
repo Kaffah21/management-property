@@ -11,7 +11,7 @@
                 @csrf
 
                 <div class="mb-5">
-                    <label class="block text-gray-700 font-semibold mb-2">Nama Villa</label>
+                    <label class="block text-gray-700 font-semibold mb-2">Villa</label>
                     <input type="text" name="nama" 
                            class="w-full px-4 py-2 border border-gray-300 rounded-md @error('nama') border-red-500 @enderror" 
                            value="{{ old('nama') }}">

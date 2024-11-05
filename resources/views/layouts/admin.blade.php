@@ -30,13 +30,13 @@
                 <li class="mb-2"><a href="{{ route('admin.dashboard') }}"
                         class="text-white hover:bg-gray-700 rounded-lg p-2 block">Dashboard</a></li>
                 <li class="mb-2"><a href="{{ route('admin.rumah.index') }}"
-                        class="text-white hover:bg-gray-700 rounded-lg p-2 block">Properti Rumah</a></li>
+                        class="text-white hover:bg-gray-700 rounded-lg p-2 block">Properti Home</a></li>
                 <li class="mb-2"><a href="{{ route('admin.villas.index') }}"
                         class="text-white hover:bg-gray-700 rounded-lg p-2 block">Properti Villa</a></li>
                 <li class="mb-2"><a href="{{ route('admin.penyewa.index') }}"
-                        class="text-white hover:bg-gray-700 rounded-lg p-2 block">Data Penyewa</a></li>
+                        class="text-white hover:bg-gray-700 rounded-lg p-2 block">Tenant Data</a></li>
                 <li class="mb-2"><a href="{{ route('admin.pemilik.index') }}"
-                        class="text-white hover:bg-gray-700 rounded-lg p-2 block">Data Pemilik property</a></li>
+                        class="text-white hover:bg-gray-700 rounded-lg p-2 block">Owner Data</a></li>
                 <li class="mb-2"><a href="{{ route('actionlogout') }}"
                         class="text-red-400 hover:bg-gray-700 rounded-lg p-2 block">Logout</a></li>
             </ul>
