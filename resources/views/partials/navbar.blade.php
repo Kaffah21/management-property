@@ -30,6 +30,7 @@
                 <!-- Dropdown menu -->
                 <div id="profileMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-10">
                     <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Edit Profile</a>
+                    <a href="{{ route('payment.history') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Riwayat Transaksi</a>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button type="submit" class="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200">Logout</button>
@@ -61,7 +62,7 @@
                     <a href="{{ route('login') }}" class="text-blue-500">Login</a>
                     <a href="{{ route('register') }}" class="text-green-500">Register</a>
                 @else
-                <div class="relative">
+                {{-- <div class="relative">
                     <!-- Button to toggle dropdown -->
                     <button id="profileMenuButton" class="flex items-center focus:outline-none">
                         <span class="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center">
@@ -72,12 +73,14 @@
                     <!-- Dropdown menu -->
                     <div id="profileMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-10">
                         <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Edit Profile</a>
+                        <!-- Menu untuk melihat riwayat transaksi -->
+                        <a href="{{ route('payment.history') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Riwayat Transaksi</a>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
                             <button type="submit" class="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200">Logout</button>
                         </form>
-                    </div>
-                </div>
+                    </div>                    
+                </div> --}}
                 @endguest
             </div>
         </div>
