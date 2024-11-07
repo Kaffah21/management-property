@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\RumahController as AdminRumahController;
 use App\Http\Controllers\RumahController;
 use App\Http\Controllers\VillaController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\Admin\PemilikController as PemilikController;
 use App\Http\Controllers\Admin\PenyewaController as PenyewaController;
 
@@ -50,8 +51,25 @@ $user = Auth::user();
 
 Route::get('villas', [VillaController::class, 'index'])->name('villas.index');
 Route::get('villas/{villa}', [VillaController::class, 'show'])->name('villas.show');
+Route::get('/villas/{villa}/booking', [VillaController::class, 'showBookingForm'])->name('villas.booking');
+Route::post('/villas/{villa}/booking', [VillaController::class, 'bookVilla'])->name('villas.book');
+Route::get('/payment/success', function () {
+    return view('payment.success'); // Create this view for a success message
+});
+Route::get('/payment/pending', function () {
+    return view('payment.pending'); // Create this view for a pending message
+});
+Route::get('/transaksi/riwayat', [TransactionController::class, 'index'])->name('payment.history');
+
+
 Route::get('rumah', [RumahController::class, 'index'])->name('rumahs.index');
 Route::get('rumah/{rumah}', [RumahController::class, 'show'])->name('rumahs.show');
+Route::get('rumah/{id}', [RumahController::class, 'show']);
+Route::get('rumah/{id}/booking', [RumahController::class, 'showBookingForm']);
+Route::post('/rumahs/{rumah}/booking', [RumahController::class, 'bookRumah'])->name('rumahs.book');
+Route::get('payment/success', [RumahController::class, 'paymentSuccess']);
+Route::get('payment/pending', [RumahController::class, 'paymentPending']);
+
 
 Route::get('/about', function () {
     return view('about');
