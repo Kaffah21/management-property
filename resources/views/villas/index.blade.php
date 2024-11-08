@@ -2,33 +2,12 @@
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
 @section('content')
-<style>
-    /* Animasi mengetik */
-    @keyframes typing {
-        from { width: 0; }
-        to { width: 100%; }
-    }
-    @keyframes blink-caret {
-        50% { border-color: transparent; }
-    }
-    .typing-effect {
-        overflow: hidden;
-        border-right: .15em solid rgb(97, 95, 91);
-        white-space: nowrap;
-        animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-    }
-</style>
+
 <div class="container mx-auto px-4 py-8">
-    <!-- Animasi teks sambutan -->
-    <div class="text-center mb-10">
-        <h1 class="text-4xl font-bold text-black typing-effect ">Selamat Datang di Villa Kami!</h1>
-        <p class="mt-4 text-gray-700 text-lg max-w-2xl mx-auto">
-            Temukan villa impian Anda di destinasi terbaik. Kami menawarkan pengalaman menginap yang tak terlupakan dengan fasilitas mewah dan pemandangan menakjubkan. Jelajahi berbagai pilihan villa kami dan rasakan kenyamanan yang sempurna.
-        </p>
-    </div>
+
 
     <div class="container mx-auto px-4">
-        <h2 class="text-2xl font-semibold mb-6">Daftar Villa</h2>
+        <h2 class="text-2xl font-semibold mb-6 text-center">Daftar Villa</h2>
 
         <!-- Grid container -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

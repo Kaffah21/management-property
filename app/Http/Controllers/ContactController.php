@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactUsMailable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -12,26 +13,17 @@ class ContactController extends Controller
         return view('contact-us'); 
     }
 
-    public function submitForm(Request $request)
+    public function submit(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|string|max:255',
             'email' => 'required|email',
-            'message' => 'required',
+            'message' => 'required|string'
         ]);
 
-        $details = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'message' => $request->message,
-        ];
+        // Kirim email
+        Mail::send(new ContactUsMailable($request->name, $request->email, $request->message));
 
-        Mail::send('emails.contact-request', $details, function($message) use ($details) {
-            $message->to('kaffahsilmi217@gmail.com') 
-                    ->subject('New Contact Request');
-            $message->from($details['email'], $details['name']);
-        });
-
-        return back()->with('success', 'Pesan terkirim, permintaan anda akan kami proses');
+        return redirect()->back()->with('success', 'Pesan Anda berhasil dikirim.');
     }
 }

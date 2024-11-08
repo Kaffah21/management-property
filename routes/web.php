@@ -75,10 +75,14 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-Route::get('/contact-us', [ContactController::class, 'showForm'])->name('contact.show');
-Route::post('/contact-us', [ContactController::class, 'submitForm'])->name('contact.submit');
 
+Route::get('/contact-us', function () {
+    return view('contact-us');
+})->name('contact.form');
 
+Route::post('/contact-us', [ContactController::class, 'submit'])->name('contact.submit');
+
+Route::get('/search', [MasterController::class, 'search'])->name('search');
 
 
 // ROUTE ADMIN

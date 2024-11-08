@@ -57,7 +57,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div>
             {{ $rumahs->links() }}
+            </div>
         </div>
     </div>
 </div>

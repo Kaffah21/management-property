@@ -12,7 +12,7 @@
     <div class="flex flex-col md:flex-row">
         <!-- Foto -->
         <div class="md:w-1/3 mb-4 md:mb-0">
-            <img src="assets/villa.jpg" alt="Foto Perusahaan" class="w-full h-auto rounded-md shadow-md">
+            <img src="/assets/About-us-page.svg" alt="Foto Perusahaan" class="w-full h-auto rounded-md shadow-md">
         </div>
 
         <!-- Deskripsi dan Lokasi -->
