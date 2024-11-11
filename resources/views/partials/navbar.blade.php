@@ -1,9 +1,10 @@
-<nav class="bg-white p-4">
+<nav id="navbar" class="bg-transparent p-2 sticky top-0 z-50 transition-all duration-500">
     <div class="container mx-auto flex justify-between items-center">
         <!-- Brand -->
         <a href="{{ route('master') }}" class="flex items-center">
-            <img src="assets/logo.png" alt="Logo" class="h-8 mr-2">
+            <img src="assets/logo.png" alt="Logo" class="h-16 mr-2">
         </a>
+        
 
         <!-- Centered Links for Desktop -->
         <div class="hidden md:flex flex-1 justify-center space-x-6">
@@ -22,7 +23,7 @@
             <div class="relative">
                 <!-- Button to toggle dropdown -->
                 <button id="profileMenuButton" class="flex items-center focus:outline-none">
-                    <span class="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center">
+                    <span class="w-10 h-10 bg-gray-600 rounded-full flex items-center justify-center">
                         {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
                     </span>
                 </button>
@@ -88,6 +89,22 @@
 </nav>
 
 <script>
+
+window.onscroll = function() { changeNavbarColor() };
+
+function changeNavbarColor() {
+    const navbar = document.getElementById("navbar");
+    const isMasterPage = window.location.pathname === "{{ route('master') }}"; // Sesuaikan rute "master" di sini
+
+    
+    if (window.scrollY > 100) {
+        navbar.classList.add("bg-gray-200", "shadow-md");
+        navbar.classList.remove("bg-transparent");
+    } else {
+        navbar.classList.add("bg-transparent");
+        navbar.classList.remove("bg-gray-200", "shadow-md");
+    }
+}
     // Toggle Mobile Menu
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');

@@ -11,7 +11,7 @@ class VillaController extends Controller
 {
     public function index()
     {
-        $villas = Villa::latest()->paginate(10);
+        $villas = Villa::latest()->paginate(5);
         return view('admin.villas.index', compact('villas'));
     }
 

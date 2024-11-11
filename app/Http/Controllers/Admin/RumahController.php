@@ -11,7 +11,7 @@ class RumahController extends Controller
 {
     public function index()
     {
-        $rumahs = Rumah::paginate(10); // Menampilkan 10 data per halaman
+        $rumahs = Rumah::paginate(5); // Menampilkan 10 data per halaman
         return view('admin.rumah.index', compact('rumahs'));
     }
 
