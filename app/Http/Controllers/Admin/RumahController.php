@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Rumah;
+use App\Models\Transaction;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -87,4 +88,10 @@ class RumahController extends Controller
         $rumah->delete();
         return redirect()->route('admin.rumah.index')->with('success', 'Home property delete successfully');
     }
+
+    public function adminTransactions()
+{
+    $transactions = Transaction::with('user', 'property')->get();
+    return view('admin.transaksi.rumah', compact('transactions'));
+}
 }

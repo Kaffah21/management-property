@@ -53,7 +53,10 @@
                 <textarea name="message" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" rows="4"></textarea>
             </div>
             
-            <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 rounded-md">
+            <button type="submit"  class="w-full py-2 rounded-md border transition duration-300"
+            style="background-color: white; color: #049484; border: 1px solid #049484;"
+            onmouseover="this.style.backgroundColor='#049484'; this.style.color='white';"
+            onmouseout="this.style.backgroundColor='white'; this.style.color='#049484';">
                 Submit 
             </button>
         </form>

@@ -13,6 +13,8 @@ use App\Http\Controllers\RumahController;
 use App\Http\Controllers\VillaController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\Admin\TransaksiController;
 use App\Http\Controllers\Admin\PemilikController as PemilikController;
 use App\Http\Controllers\Admin\PenyewaController as PenyewaController;
 
@@ -59,7 +61,11 @@ Route::get('/payment/success', function () {
 Route::get('/payment/pending', function () {
     return view('payment.pending'); // Create this view for a pending message
 });
+Route::get('/transaction/history', [TransactionController::class, 'index'])->name('transaction.history');
 Route::get('/transaksi/riwayat', [TransactionController::class, 'index'])->name('payment.history');
+
+Route::post('/payment', [PaymentController::class, 'handlePayment'])->name('payment.handle');
+Route::post('/payment/callback', [PaymentController::class, 'midtransCallback']);
 
 
 Route::get('rumah', [RumahController::class, 'index'])->name('rumahs.index');
@@ -114,4 +120,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
 
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('pemilik', PemilikController::class);
+});
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::get('/transaksi/rumah', [TransaksiController::class, 'index'])->name('transaksi.rumah');
 });

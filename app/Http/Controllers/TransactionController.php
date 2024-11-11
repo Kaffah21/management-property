@@ -16,4 +16,15 @@ class TransactionController extends Controller
             return redirect()->route('login')->with('error', 'Please login to view your transactions.');
         }
     }
+    public function showTransactionDetail($id)
+{
+    $transaction = Transaction::with('villa')->findOrFail($id); // Fetch transaction with associated villa
+
+    // Assuming `totalPrice` and `checkOutDate` are properties of the transaction
+    $totalPrice = $transaction->total_price;
+    $checkOutDate = $transaction->check_out_date; // Or set it based on your logic
+
+    return view('payment.success', compact('transaction', 'totalPrice', 'checkOutDate'));
+}
+
 }
