@@ -45,10 +45,10 @@
         <!-- Call to Action Buttons -->
         <div class="flex justify-center space-x-4">
             <a href="{{ route('master') }}" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out">
-                Kembali ke Beranda
+                Back to Home
             </a>
             <a href="{{ route('payment.history') }}" class="bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out">
-                Lihat Pesanan Saya
+                View my order
             </a>
         </div>
     </div>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
 </head>
-
 <body class="bg-gray-100">
 
     <!-- Burger Icon for Sidebar Toggle -->
@@ -59,6 +57,26 @@
                     </a>
                 </li>
                 <li class="mb-2">
+                    <div class="relative">
+                        <a href="#" class="text-white hover:bg-gray-700 rounded-lg p-2 block flex items-center" onclick="toggleDropdown(event, 'transactionDropdown')">
+                            <i class="fas fa-receipt mr-2"></i>
+                            Transaction
+                        </a>
+                        
+                        <!-- Dropdown menu -->
+                        <div id="transactionDropdown" class="hidden absolute left-0 mt-2 w-48 bg-gray-800 rounded-lg shadow-lg ml-4">
+                            <a href="{{route('admin.transaksi.rumah')}}" class="text-white hover:bg-gray-700 rounded-lg p-2 block">
+                                <i class="fas fa-home mr-2"></i>
+                                Rumah
+                            </a>
+                            <a href="" class="text-white hover:bg-gray-700 rounded-lg p-2 block">
+                                <i class="fas fa-building mr-2"></i>
+                                Villa
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="mb-2" id="logout">
                     <a href="{{ route('actionlogout') }}" class="text-red-400 hover:bg-gray-700 rounded-lg p-2 block">
                         <i class="fas fa-sign-out-alt mr-2"></i> 
                         Logout
@@ -74,6 +92,22 @@
     </div>
 
     <script>
+        function toggleDropdown(event, dropdownId) {
+            event.preventDefault();
+            const dropdown = document.getElementById(dropdownId);
+            const logout = document.getElementById('logout');
+
+            // Toggle visibility of dropdown
+            dropdown.classList.toggle("hidden");
+
+            // Add more spacing when the dropdown is open
+            if (!dropdown.classList.contains("hidden")) {
+                logout.classList.add("mt-32"); // Increased margin for more space
+            } else {
+                logout.classList.remove("mt-32");
+            }
+        }
+
         const burger = document.getElementById('burger');
         const sidebar = document.getElementById('sidebar');
         const mainContent = document.getElementById('main-content');
@@ -85,5 +119,4 @@
     </script>
 
 </body>
-
 </html>

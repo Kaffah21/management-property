@@ -9,18 +9,28 @@ class Transaction extends Model
 {
     use HasFactory;
 
+    // Tentukan kolom yang bisa diisi (mass-assignable)
     protected $fillable = [
-        'user_id', 'villa_id', 'check_in', 'check_out', 'guests', 'total_price', 'status'
+        'user_id',
+        'property_id',
+        'total_price',
+        'status',
     ];
+
+    public function villa()
+{
+    return $this->belongsTo(Villa::class);
+}
+
+    // Definisikan relasi dengan model User
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function villa()
+    // Definisikan relasi dengan model Property
+    public function property()
     {
-        return $this->belongsTo(Villa::class);
+        return $this->belongsTo(Property::class);
     }
-
-    
 }

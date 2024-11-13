@@ -21,7 +21,10 @@
                         <i class="fas fa-star text-yellow-400"></i> {{ $villa->rating }}/5<br>
                         <span class="font-semibold text-lg text-gray-800">Rp {{ number_format($villa->harga) }} / malam</span>
                     </p>
-                    <a href="{{ route('villas.show', $villa) }}" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Lihat Detail</a>
+                    <a href="{{ route('villas.show', $villa) }}"  class="px-6 py-2 rounded-md border transition duration-300"
+                    style="background-color: white; color: #049484; border: 1px solid #049484;"
+                    onmouseover="this.style.backgroundColor='#049484'; this.style.color='white';"
+                    onmouseout="this.style.backgroundColor='white'; this.style.color='#049484';">Lihat Detail</a>
                 </div>
             </div>
             @endforeach

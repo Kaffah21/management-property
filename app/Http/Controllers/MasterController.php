@@ -10,10 +10,12 @@ class MasterController extends Controller
 {
     public function index()
     {
-        $rumahs = Rumah::latest()->take(6)->get(); // Atur jumlah data yang ingin ditampilkan
-    $villas = Villa::latest()->take(6)->get();
-        return view('master',compact('rumahs','villas')); // Menampilkan halaman dan menampilkan card rumah dan villa
+        $rumahs = Rumah::latest()->take(6)->get();
+        $villas = Villa::latest()->take(6)->get();
+    
+        return view('master', compact('rumahs', 'villas'));
     }
+    
     public function search(Request $request)
     {
         $query = $request->input('query');
@@ -25,7 +27,7 @@ class MasterController extends Controller
     
         $villas = Villa::where('nama', 'LIKE', "%{$query}%")
                        ->orWhere('lokasi', 'LIKE', "%{$query}%")
-                       ->get();
+                       ->get( );
     
         // Mengembalikan view dengan hasil pencarian
         return view('search-results', compact('rumahs', 'villas', 'query'));

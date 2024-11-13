@@ -11,7 +11,7 @@
                 </svg>
             </div>
             <div class="ml-4">
-                <h3 class="text-gray-500 text-sm">Total Users</h3>
+                <h3 class="text-gray-500 text-sm">Total Transaksi</h3>
                 <span class="text-2xl font-bold">120</span>
             </div>
         </div>
