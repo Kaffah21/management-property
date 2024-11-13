@@ -35,9 +35,9 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        @foreach ($villas as $villa)
+                        @foreach ($villas as $index => $villa)
                             <tr>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $loop->iteration }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $index + 1 + ($villas->currentPage() - 1) * $villas->perPage() }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap"><img
                                         src="{{ Storage::url('villas/' . $villa->gambar) }}" width="100"></td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $villa->nama }}</td>
