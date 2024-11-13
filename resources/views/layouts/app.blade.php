@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name', 'MyApp') }}</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet"> <!-- Pastikan ini sesuai dengan struktur CSS Anda -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script> <!-- Pastikan ini sesuai dengan struktur JS Anda -->
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">

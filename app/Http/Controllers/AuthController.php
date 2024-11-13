@@ -7,34 +7,43 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
+
+// Controller untuk Logi  User
 class AuthController extends Controller
 {
+    // Show the login form
     public function showLogin()
     {
         return view('login');
     }
 
-    // Proses login
+    // Handle the login process
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-        
-        if (Auth::attempt($credentials)) {
-            return redirect()->intended('/master'); // Ganti /home dengan halaman yang ingin dituju setelah login
-        }
-
-        return back()->withErrors([
-            'email' => 'Email atau password salah.',
+    
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
+    
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/master');
+        }
+    
+        // Set error message if login fails
+        return back()->with('error', 'Email atau password salah.');
     }
+    
 
-    // Tampilkan form register
+    // Show the registration form
     public function showRegister()
     {
         return view('register');
     }
 
-    // Proses register
+    // Handle the registration process
     public function register(Request $request)
     {
         $request->validate([
@@ -50,5 +59,15 @@ class AuthController extends Controller
         ]);
 
         return redirect()->route('login')->with('success', 'Pendaftaran berhasil, silakan login.');
+    }
+
+    // Handle the logout process
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('master'); // Redirect to 'master' page after logout
     }
 }
