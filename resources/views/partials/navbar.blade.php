@@ -17,8 +17,8 @@
 
         <div class="flex items-center space-x-4">
             @guest
-                <a href="{{ route('login') }}" class="text-blue-500">Login</a>
-                <a href="{{ route('register') }}" class="text-green-500">Register</a>
+            <a href="{{ route('login') }}" class="text-gray-800 font-semibold text-sm px-4 py-2 rounded-lg transition duration-300 hover:text-white hover:bg-gray-700 border border-gray-700 mr-2">Sign In</a>
+            <a href="{{ route('register') }}" class="text-white font-semibold text-sm px-4 py-2 rounded-lg transition duration-300 bg-gray-800 hover:bg-gray-700">Sign Up</a>            
             @else
             <div class="relative">
                 <!-- Button to toggle dropdown -->
@@ -58,11 +58,12 @@
             <a href="{{route('villas.index')}}" class="text-black hover:text-gray font-semibold py-2">Properti Villa</a>
             <a href="{{url('contact')}}" class="text-black hover:text-gray font-semibold py-2">Contact Us</a>
             <a href="{{url('about')}}" class="text-black hover:text-gray font-semibold py-2">About Us</a>
+           
             <div class="flex items-center space-x-4">
                 @guest
-                    <a href="{{ route('login') }}" class="text-blue-500">Login</a>
-                    <a href="{{ route('register') }}" class="text-green-500">Register</a>
-                @else
+                    <a href="{{ route('login') }}" class="text-gray-800 font-semibold text-sm px-4 py-2 rounded-lg transition duration-300 hover:text-white hover:bg-gray-700 border border-gray-700 mr-2">Sig In </a>
+                    <a href="{{ route('register') }}" class="text-white font-semibold text-sm px-4 py-2 rounded-lg transition duration-300 bg-gray-800 hover:bg-gray-700">Sign Up</a>            
+                    @else
                 {{-- <div class="relative">
                     <!-- Button to toggle dropdown -->
                     <button id="profileMenuButton" class="flex items-center focus:outline-none">

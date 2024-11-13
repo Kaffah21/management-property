@@ -27,9 +27,10 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach($rumahs as $rumah)
+                    @foreach($rumahs as $index => $rumah)
                     <tr>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $loop->iteration }}</td>
+                        <!-- Adjust the "No" column to account for pagination -->
+                        <td class="px-6 py-4 whitespace-nowrap">{{ $index + 1 + ($rumahs->currentPage() - 1) * $rumahs->perPage() }}</td>
                         <td class="px-6 py-4 whitespace-nowrap"><img src="{{ Storage::url('rumah/'.$rumah->gambar) }}" width="100"></td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $rumah->nama }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">Rp {{ number_format($rumah->harga) }}</td>
@@ -58,7 +59,7 @@
                 </tbody>
             </table>
             <div>
-            {{ $rumahs->links() }}
+                {{ $rumahs->links() }}
             </div>
         </div>
     </div>

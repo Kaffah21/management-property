@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
 
+//login unduk admin
 class LoginController extends Controller
 {
     public function Login()
