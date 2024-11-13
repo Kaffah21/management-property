@@ -1,0 +1,10 @@
+@extends('layouts.app')
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+@section('content')
+    <div class="container">
+        <h2 class="text-2xl font-semibold text-center text-yellow-600">Pembayaran Anda Sedang Diproses</h2>
+        <p class="text-center text-gray-700">Pembayaran Anda sedang dalam proses, harap tunggu konfirmasi lebih lanjut.</p>
+        <!-- Anda bisa menambahkan informasi lainnya di sini -->
+    </div>
+@endsection

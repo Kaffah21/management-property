@@ -11,8 +11,13 @@
 </head>
 
 <body class="bg-gray-100">
-    <div class="container mx-auto">
-        <div class="max-w-md mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
+
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/assets/villa.jpg');">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+    </div>
+
+    <div class="relative z-10 flex items-center justify-center min-h-screen">
+        <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-lg mx-auto">
             <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Register</h2>
 
             <!-- Display success or error messages -->

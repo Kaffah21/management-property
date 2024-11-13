@@ -17,12 +17,11 @@
             <!-- Right Section: Links -->
             <div class="w-1/2 flex flex-col items-end">
                 <div class="mb-2">
-                    <a href="#" class="text-gray-400 hover:text-gray-300">Home</a>
-                    <a href="#" class="text-gray-400 hover:text-gray-300">Rumah</a>
-                    <a href="#" class="text-gray-400 hover:text-gray-300">Villa</a>
-                    <a href="#" class="text-gray-400 hover:text-gray-300">Contact Us</a>
-                    <a href="#" class="text-gray-400 hover:text-gray-300">About</a>
-                    <a href="#" class="text-gray-400 hover:text-gray-300">Join</a>
+                    <a href="{{ route('master') }}" class="text-gray-400 hover:text-gray-300">Home</a>
+                    <a href="{{ route('rumahs.index') }}" class="text-gray-400 hover:text-gray-300">Rumah</a>
+                    <a href="{{ route('villas.index') }}" class="text-gray-400 hover:text-gray-300">Villa</a>
+                    <a href="{{url('contact-us')}}" class="text-gray-400 hover:text-gray-300">Contact Us</a>
+                    <a href="{{ url('about') }}" class="text-gray-400 hover:text-gray-300">About</a>
 
 
                 </div>
@@ -33,7 +32,7 @@
                     <a href="#" class="text-white hover:text-gray-400" aria-label="Twitter">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="https://www.instagram.com/kffh217" class="text-white hover:text-gray-400" aria-label="Instagram">
+                    <a href="https://www.instagram.com/kffh_217" class="text-white hover:text-gray-400" aria-label="Instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
                     <a href="https://www.linkedin.com/in/kaffah-ms-944088321?" class="text-white hover:text-gray-400" aria-label="LinkedIn">

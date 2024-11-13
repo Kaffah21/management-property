@@ -10,7 +10,15 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\VillaController as AdminVillaController;
 use App\Http\Controllers\Admin\RumahController as AdminRumahController;
 use App\Http\Controllers\RumahController;
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\VillaController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\Admin\TransaksiController;
+use App\Http\Controllers\Admin\PemilikController as PemilikController;
+use App\Http\Controllers\Admin\PenyewaController as PenyewaController;
+
 
 
 
@@ -20,22 +28,29 @@ Route::get('/', function () {
 });
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
-
 Route::post('/logout', function () {
     Auth::logout();
-    return redirect('master');
+    return redirect()->route('master');
 })->name('logout');
+
+// Route::post('/logout', function () {
+//     Auth::logout();
+//     return redirect('master');
+// })->name('logout');
 
 
 Route::get('master', [MasterController::class, 'index'])->name('master')->middleware('auth');
-Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
 
 Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
 Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register.form');
@@ -46,18 +61,49 @@ $user = Auth::user();
 
 Route::get('villas', [VillaController::class, 'index'])->name('villas.index');
 Route::get('villas/{villa}', [VillaController::class, 'show'])->name('villas.show');
+Route::get('/villas/{villa}/booking', [VillaController::class, 'showBookingForm'])->name('villas.booking');
+Route::post('/villas/{villa}/booking', [VillaController::class, 'bookVilla'])->name('villas.book');
+Route::get('/payment/success', function () {
+    return view('payment.success'); // Create this view for a success message
+});
+Route::get('/payment/pending', function () {
+    return view('payment.pending'); // Create this view for a pending message
+});
+Route::get('/transaction/history', [TransactionController::class, 'index'])->name('transaction.history');
+Route::get('/transaksi/riwayat', [TransactionController::class, 'index'])->name('payment.history');
+
+Route::post('/payment', [PaymentController::class, 'handlePayment'])->name('payment.handle');
+Route::post('/payment/callback', [PaymentController::class, 'midtransCallback']);
+
+
+Route::get('rumah', [RumahController::class, 'index'])->name('rumahs.index');
+Route::get('rumah/{rumah}', [RumahController::class, 'show'])->name('rumahs.show');
+Route::get('rumah/{id}', [RumahController::class, 'show']);
+Route::get('rumah/{id}/booking', [RumahController::class, 'showBookingForm']);
+Route::post('/rumahs/{rumah}/booking', [RumahController::class, 'bookRumah'])->name('rumahs.book');
+Route::get('payment/success', [RumahController::class, 'paymentSuccess']);
+Route::get('payment/pending', [RumahController::class, 'paymentPending']);
+
 
 Route::get('/about', function () {
     return view('about');
 })->name('about');
 
 
+Route::get('/contact-us', function () {
+    return view('contact-us');
+})->name('contact.form');
+
+Route::post('/contact-us', [ContactController::class, 'submit'])->name('contact.submit');
+
+Route::get('/search', [MasterController::class, 'search'])->name('search');
 
 
 // ROUTE ADMIN
 
 Route::get('/admin/login', [AdminController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AdminController::class, 'login'])->name('admin.login.submit');
+Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth');
 Route::prefix('admin')->name('admin.')->group(function () {
    
@@ -70,8 +116,20 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
     Route::resource('rumah', AdminRumahController::class);
 });
-Route::get('/admin/rumah/{rumah}/edit', [RumahController::class, 'edit'])->name('admin.rumah.edit'); // Untuk menampilkan formulir edit
+Route::get('/admin/rumah/{id}/edit', [RumahController::class, 'edit'])->name('admin.rumah.edit');
 Route::patch('/admin/rumah/{rumah}', [RumahController::class, 'update'])->name('admin.rumah.update'); // Untuk mengirim data pembaruan
 
-Route::get('rumah', [RumahController::class, 'index'])->name('rumahs.index');
-Route::get('rumah/{rumah}', [RumahController::class, 'show'])->name('rumahs.show');
+
+
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::resource('penyewa', PenyewaController::class);
+    Route::resource('pemilik', PemilikController::class);
+});
+
+
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::resource('pemilik', PemilikController::class);
+});
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::get('/transaksi/rumah', [TransaksiController::class, 'index'])->name('transaksi.rumah');
+});

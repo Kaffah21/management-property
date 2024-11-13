@@ -1,3 +1,8 @@
+@extends('layouts.app')
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+
 <style>
     /* Container Styling */
 form {
@@ -80,35 +85,38 @@ form button[type="submit"]:focus {
 }
 
 </style>
+@section('content')
 @if (session('success'))
-    <div class="bg-green-100 text-green-700 border border-green-400 p-4 rounded-md mb-4">
-        {{ session('success') }}
-    </div>
+<div class="bg-green-100 text-green-700 border border-green-400 p-4 rounded-md mb-4">
+    {{ session('success') }}
+</div>
 @endif
 
 <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg">
-    @csrf
-    <div class="mb-4">
-        <label for="name" class="block text-gray-700 font-semibold mb-2">Name:</label>
-        <input type="text" name="name" value="{{ $user->name }}" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-    </div>
-    <div class="mb-4">
-        <label for="email" class="block text-gray-700 font-semibold mb-2">Email:</label>
-        <input type="email" name="email" value="{{ $user->email }}" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-    </div>
-    <div class="mb-4">
-        <label for="password" class="block text-gray-700 font-semibold mb-2">New Password (optional):</label>
-        <input type="password" name="password" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-    </div>
-    <div class="mb-4">
-        <label for="password_confirmation" class="block text-gray-700 font-semibold mb-2">Confirm Password:</label>
-        <input type="password" name="password_confirmation" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-    </div>
-    <div class="mb-4">
-        <label for="profile_photo" class="block text-gray-700 font-semibold mb-2">Profile Photo (optional):</label>
-        <input type="file" name="profile_photo" accept="image/*" class="w-full px-4 py-2 text-gray-700 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-    </div>
-    <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-        Update Profile
-    </button>
+@csrf
+<div class="mb-4">
+    <label for="name" class="block text-gray-700 font-semibold mb-2">Name:</label>
+    <input type="text" name="name" value="{{ $user->name }}" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+</div>
+<div class="mb-4">
+    <label for="email" class="block text-gray-700 font-semibold mb-2">Email:</label>
+    <input type="email" name="email" value="{{ $user->email }}" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+</div>
+<div class="mb-4">
+    <label for="password" class="block text-gray-700 font-semibold mb-2">New Password (optional):</label>
+    <input type="password" name="password" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+</div>
+<div class="mb-4">
+    <label for="password_confirmation" class="block text-gray-700 font-semibold mb-2">Confirm Password:</label>
+    <input type="password" name="password_confirmation" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+</div>
+<div class="mb-4">
+    <label for="profile_photo" class="block text-gray-700 font-semibold mb-2">Profile Photo (optional):</label>
+    <input type="file" name="profile_photo" accept="image/*" class="w-full px-4 py-2 text-gray-700 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+</div>
+<button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+    Update Profile
+</button>
 </form>
+@endsection
+

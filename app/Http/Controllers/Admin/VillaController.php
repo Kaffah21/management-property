@@ -11,7 +11,7 @@ class VillaController extends Controller
 {
     public function index()
     {
-        $villas = Villa::latest()->paginate(10);
+        $villas = Villa::latest()->paginate(5);
         return view('admin.villas.index', compact('villas'));
     }
 
@@ -52,10 +52,12 @@ class VillaController extends Controller
     
     
 
-    public function edit(Villa $villa)
+    public function edit($id)
     {
+        $villa = Villa::findOrFail($id);
         return view('admin.villas.edit', compact('villa'));
     }
+    
 
     public function update(Request $request, Villa $villa)
     {
