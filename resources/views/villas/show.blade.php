@@ -194,9 +194,22 @@
             }
         }
         document.addEventListener('DOMContentLoaded', function() {
-            const today = new Date().toISOString().split('T')[0]; // Get today's date in 'YYYY-MM-DD' format
-            document.getElementById('check_in').setAttribute('min', today);
-            document.getElementById('check_out').setAttribute('min', today);
+            const today = new Date().toISOString().split('T')[0];
+            const checkInInput = document.getElementById('check_in');
+            const checkOutInput = document.getElementById('check_out');
+
+            checkInInput.setAttribute('min', today);
+
+            // Update the minimum check-out date when the check-in date is selected
+            checkInInput.addEventListener('change', function() {
+                const selectedCheckInDate = checkInInput.value;
+                checkOutInput.setAttribute('min', selectedCheckInDate);
+
+                // Reset check-out date if it’s before the new check-in date
+                if (checkOutInput.value && checkOutInput.value < selectedCheckInDate) {
+                    checkOutInput.value = selectedCheckInDate;
+                }
+            });
         });
 
         function updateTotalPrice() {

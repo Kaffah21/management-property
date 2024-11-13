@@ -28,7 +28,7 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        @forelse ($transactions as $transaction)
+                        @forelse ($transactions as $index => $transaction)
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $loop->iteration }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $transaction->user->name }}</td>

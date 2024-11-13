@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\VillaController as AdminVillaController;
 use App\Http\Controllers\Admin\RumahController as AdminRumahController;
 use App\Http\Controllers\RumahController;
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\VillaController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\TransactionController;
@@ -27,22 +28,29 @@ Route::get('/', function () {
 });
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
-
 Route::post('/logout', function () {
     Auth::logout();
-    return redirect('master');
+    return redirect()->route('master');
 })->name('logout');
+
+// Route::post('/logout', function () {
+//     Auth::logout();
+//     return redirect('master');
+// })->name('logout');
 
 
 Route::get('master', [MasterController::class, 'index'])->name('master')->middleware('auth');
-Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
 
 Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
 Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register.form');
@@ -95,6 +103,7 @@ Route::get('/search', [MasterController::class, 'search'])->name('search');
 
 Route::get('/admin/login', [AdminController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AdminController::class, 'login'])->name('admin.login.submit');
+Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth');
 Route::prefix('admin')->name('admin.')->group(function () {
    

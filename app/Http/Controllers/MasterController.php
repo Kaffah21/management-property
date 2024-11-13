@@ -27,7 +27,7 @@ class MasterController extends Controller
     
         $villas = Villa::where('nama', 'LIKE', "%{$query}%")
                        ->orWhere('lokasi', 'LIKE', "%{$query}%")
-                       ->get();
+                       ->get( );
     
         // Mengembalikan view dengan hasil pencarian
         return view('search-results', compact('rumahs', 'villas', 'query'));
