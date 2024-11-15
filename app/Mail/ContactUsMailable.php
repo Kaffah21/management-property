@@ -31,7 +31,7 @@ class ContactUsMailable extends Mailable
     public function build()
     {
         return $this->subject('Pesan Contact Us Baru')
-                    ->to('kaffahsilmi217@gmail.com')
+                    ->to('silmikaffahkaffah25@gmail.com')
                     ->view('emails.contact_us');
     }
 }

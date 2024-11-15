@@ -11,8 +11,9 @@
             <!-- Left Section: Website Info -->
             <div class="w-1/2">
                 <h5 class="text-lg font-semibold">Real Estate</h5>
-                <p class="mt-2">Selamat datang di platform properti kami, tempat di mana Anda dapat menemukan berbagai pilihan properti untuk disewa atau dibeli
-                    yang sesuai dengan kebutuhan Anda. </p>
+                <p class="mt-2"> 
+                    Welcome to our property platform, a place where you can find a wide selection of properties to rent or buy  that suits your needs.
+                     </p>
             </div>
             <!-- Right Section: Links -->
             <div class="w-1/2 flex flex-col items-end">
@@ -44,8 +45,17 @@
         
                 </div>
                 
-
+                <div class="f-bottom">
+                    <div class="auto-container">
+                        <div class="inner clearfix">
+                            <div class="copyright"><a href="">Copyright
+                                        by kaffah</a></strong>
+                                &copy; 2024
+                            </div>
+                        </div>
+                    </div>
+                </div>            
             </div>
         </div>
-    </div>
+    </div> 
 </footer>

@@ -15,15 +15,28 @@ class ContactController extends Controller
 
     public function submit(Request $request)
     {
+        // Validasi data
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required',
             'email' => 'required|email',
-            'message' => 'required|string'
+            'message' => 'required',
         ]);
 
-        // Kirim email
-        Mail::send(new ContactUsMailable($request->name, $request->email, $request->message));
+        // Data untuk email
+        $data = [
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'messageContent' => $request->input('message'),
+        ];
 
-        return redirect()->back()->with('success', 'Pesan Anda berhasil dikirim.');
+        // Kirim email
+        Mail::send('emails.contact_us', $data, function ($message) use ($data) {
+            $message->from($data['email'], $data['name']); // Set 'from' dengan email pengirim
+            $message->to('silmikaffahkaffah25@gmail.com') 
+                    ->subject('New Contact Message');
+        });
+
+        // Redirect kembali dengan pesan sukses
+        return back()->with('success', 'Your message has been sent successfully!');
     }
 }

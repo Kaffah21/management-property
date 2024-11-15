@@ -58,6 +58,7 @@
                     @endforeach
                 </tbody>
             </table>
+    {{-- pagination --}}
             <div>
                 {{ $rumahs->links() }}
             </div>

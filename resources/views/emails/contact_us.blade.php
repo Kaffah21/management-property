@@ -10,7 +10,6 @@
     <h2>Pesan Contact Us</h2>
     <p><strong>Nama:</strong> {{ $name }}</p>
     <p><strong>Email:</strong> {{ $email }}</p>
-    <p><strong>Pesan:</strong></p>
-    <p>{{ $messageContent }}</p>
+    <p><strong>Pesan:</strong>{{ $messageContent }}</p>
 </body>
 </html>
