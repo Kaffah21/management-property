@@ -66,6 +66,8 @@
                         @endforeach
                     </tbody>
                 </table>
+           
+                {{-- pagination --}}
                 <div>
                     {{ $villas->links() }}
                 </div>

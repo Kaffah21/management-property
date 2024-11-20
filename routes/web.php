@@ -64,12 +64,12 @@ Route::get('villas/{villa}', [VillaController::class, 'show'])->name('villas.sho
 Route::get('/villas/{villa}/booking', [VillaController::class, 'showBookingForm'])->name('villas.booking');
 Route::post('/villas/{villa}/booking', [VillaController::class, 'bookVilla'])->name('villas.book');
 Route::get('/payment/success', function () {
-    return view('payment.success'); // Create this view for a success message
+    return view('payment.success'); 
 });
 Route::get('/payment/pending', function () {
     return view('payment.pending'); // Create this view for a pending message
 });
-Route::get('/transaction/history', [TransactionController::class, 'index'])->name('transaction.history');
+Route::get('/transaction/history', [TransactionController::class, 'index'])->name('payment.history');
 Route::get('/transaksi/riwayat', [TransactionController::class, 'index'])->name('payment.history');
 
 Route::post('/payment', [PaymentController::class, 'handlePayment'])->name('payment.handle');

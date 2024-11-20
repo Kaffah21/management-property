@@ -49,12 +49,12 @@
 
 
 
-    <a style="margin-top: 275px" href="{{ url('/rumah') }}" class="block text-2xl font-bold mb-6 text-center">Rumah</a>
+    <a style="margin-top: 400px" href="{{ url('/rumah') }}" class="block text-2xl font-bold mb-6 text-center">Rumah</a>
 
     <div class="container mx-auto px-4 mb-12"> 
         <!-- Grid container -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            @foreach($rumahs  as $rumah)
+            @foreach($rumahs ?? []  as $rumah)
             <div class="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105">
                 <img src="{{ Storage::url('rumah/'.$rumah->gambar) }}" class="w-full h-48 object-cover" alt="{{ $rumah->nama }}">
                 <div class="p-6">

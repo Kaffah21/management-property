@@ -18,6 +18,14 @@
                         <span>{{ $villa->lokasi }}</span>
                     </li>
                     <li class="flex justify-between text-gray-700">
+                        <span class="font-semibold">Check-in:</span>
+                        <span>{{ $villa->created_at->format('d M Y') }}</span>
+                    </li>
+                    <li class="flex justify-between text-gray-700">
+                        <span class="font-semibold">Check-out:</span>
+                        <span>{{ $villa->checkOutDate }}</span>
+                    </li>
+                    <li class="flex justify-between text-gray-700">
                         <span class="font-semibold">Total:</span>
                         <span>{{ number_format($totalPrice) }}</span>
                     </li>

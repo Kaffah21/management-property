@@ -26,7 +26,7 @@
                 </svg>
             </div>
             <div class="ml-4">
-                <h3 class="text-gray-500 text-sm">Revenue</h3>
+                <h3 class="text-gray-500 text-sm">Pendapatan</h3>
                 <span class="text-2xl font-bold">$1,200</span>
             </div>
         </div>
@@ -41,7 +41,7 @@
                 </svg>
             </div>
             <div class="ml-4">
-                <h3 class="text-gray-500 text-sm">Traffic</h3>
+                <h3 class="text-gray-500 text-sm">Statistik</h3>
                 <span class="text-2xl font-bold">45.5K</span>
             </div>
         </div>
