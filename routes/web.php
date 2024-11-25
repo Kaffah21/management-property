@@ -1,5 +1,5 @@
 <?php
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\MasterController;
 use Illuminate\Support\Facades\Route;
@@ -44,13 +44,10 @@ Route::post('/logout', function () {
     return redirect()->route('master');
 })->name('logout');
 
-// Route::post('/logout', function () {
-//     Auth::logout();
-//     return redirect('master');
-// })->name('logout');
 
+Route::get('master', [MasterController::class, 'index'])->name('master');
 
-Route::get('master', [MasterController::class, 'index'])->name('master')->middleware('auth');
+// Route::get('master', [MasterController::class, 'index'])->name('master')->middleware('auth');
 
 Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
 Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register.form');
@@ -67,7 +64,7 @@ Route::get('/payment/success', function () {
     return view('payment.success'); 
 });
 Route::get('/payment/pending', function () {
-    return view('payment.pending'); // Create this view for a pending message
+    return view('payment.pending'); 
 });
 Route::get('/transaction/history', [TransactionController::class, 'index'])->name('payment.history');
 Route::get('/transaksi/riwayat', [TransactionController::class, 'index'])->name('payment.history');
@@ -112,7 +109,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
     Route::resource('villas', AdminVillaController::class);
 });
 
-//add property home
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
     Route::resource('rumah', AdminRumahController::class);
 });

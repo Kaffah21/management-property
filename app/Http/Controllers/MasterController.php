@@ -10,10 +10,15 @@ class MasterController extends Controller
 {
     public function index()
     {
-        $rumahs = Rumah::latest()->take(6)->get();
-        $villas = Villa::latest()->take(6)->get();
-    
-        return view('master', compact('rumahs', 'villas'));
+//         $rumahs = Rumah::all() ?? collect(); // Pastikan data selalu ada
+// $villas = Villa::all() ?? collect(); // Pastikan data selalu ada
+
+// return view('master', compact('rumahs', 'villas'));
+
+$rumahs = Rumah::latest()->take(6)->get();
+$villas = Villa::latest()->take(6)->get();
+
+return view('master', compact('rumahs', 'villas'));
     }
     
     public function search(Request $request)
