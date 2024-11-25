@@ -1,7 +1,18 @@
 @extends('layouts.app')
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 @section('content')
+
+<div id="alertOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+    <div id="alert" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+        <div class="bg-white text-gray-800 p-6 rounded-lg shadow-lg max-w-sm w-full text-center">
+            <p id="alertMessage" class="text-lg font-semibold"></p>
+            <button onclick="closeAlert()" class="mt-4 bg-gray-300 text-gray-800 px-4 py-2 rounded-full">Close</button>
+            <button onclick="redirectToLogin()" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-full">Login</button>
+        </div>
+    </div>    
+
     <div class="container mx-auto px-4 py-8">
         <div class="flex flex-col lg:flex-row lg:max-w-7xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
             <!-- Left Column - Detail Rumah -->
@@ -27,7 +38,7 @@
             <!-- Right Column - Booking Form -->
             <div class="lg:w-1/2 p-6 bg-gray-100">
                 <h3 class="text-2xl font-semibold text-gray-800 mb-6">Booking</h3>
-                <form action="{{ route('rumahs.book', $rumah->id) }}" method="POST" class="space-y-6">
+                <form action="{{ route('rumahs.book', $rumah->id) }}" method="POST" class="space-y-6" id="bookingForm">
                     @csrf
                     <div class="mb-4">
                         <label for="name" class="block text-sm font-semibold text-gray-700">Name</label>
@@ -91,6 +102,7 @@
 
     <script>
         const basePrice = {{ $rumah->harga }}; // Store base price for calculations
+        const isAuthenticated = @json(Auth::check());
 
         // Function to increment guest count
         function incrementGuests() {
@@ -114,6 +126,15 @@
                 countSpan.textContent = hiddenInput.value;
                 updateTotalPrice();
             }
+        }
+
+        function closeAlert() {
+            document.getElementById('alert').classList.add('hidden');
+            document.getElementById('alertOverlay').classList.add('hidden');
+        }
+
+        function redirectToLogin() {
+            window.location.href = "{{ route('login') }}";
         }
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -157,6 +178,19 @@
 
             const totalPrice = basePrice * guestCount * numberOfNights;
             document.getElementById('totalPrice').textContent = 'Rp ' + new Intl.NumberFormat().format(totalPrice);
+        }
+         // Booking form validation
+         document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            if (!isAuthenticated) {
+                e.preventDefault();
+                showAlert("You need to log in before booking.");
+            }
+        });
+
+        function showAlert(message) {
+            document.getElementById('alertMessage').textContent = message;
+            document.getElementById('alert').classList.remove('hidden');
+            document.getElementById('alertOverlay').classList.remove('hidden');
         }
     </script>
 @endsection

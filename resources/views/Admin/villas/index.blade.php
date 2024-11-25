@@ -12,7 +12,7 @@
             </div>
             <div class="p-6">
                 @if (session('success'))
-                    <div class="alert alert-success">{{ session('success') }}</div>
+                    <div class="bg-green-100 text-green-800 p-4 rounded-md mb-4">{{ session('success') }}</div>
                 @endif
 
                 <table class="table-auto w-full divide-y divide-gray-200">
