@@ -20,7 +20,6 @@
             </div>
 
             <div>
-                <h5 class="text-xl font-semibold mb-4">Quick Links</h5>
                 <ul class="space-y-3">
                     <li><a href="{{ route('master') }}" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
                     <li><a href="{{ route('rumahs.index') }}" class="text-gray-300 hover:text-white transition-colors">Rumah</a></li>
@@ -29,19 +28,18 @@
                     <li><a href="{{ url('about') }}" class="text-gray-300 hover:text-white transition-colors">About</a></li>
                 </ul>
             </div>
-
             <div>
-                <h5 class="text-xl font-semibold mb-4">Stay Updated</h5>
-                <form action="#" method="POST">
-                    <input type="email" placeholder="Your Email Address" class="px-4 py-2 rounded-lg w-full mb-4 text-black bg-gray-200">
-                    <button type="submit" class="w-full bg-green-700 text-white font-semibold py-2 rounded-lg hover:bg-green-500 transition-colors">Subscribe</button>
-                </form>
+                <ul class="space-y-3">
+                    <li><a href="{{url('faq')}}" class="text-gray-300 hover:text-white transition-colors">FAQs</a></li>
+                    <li><a href="{{url('term-condition')}}" class="text-gray-300 hover:text-white transition-colors">Terms & Conditions</a></li>
+                    <li><a href="{{url('privacy-policy')}}" class="text-gray-300 hover:text-white transition-colors">Privacy Policy</a></li>
+                </ul>
             </div>
-
             <div>
                 <h5 class="text-xl font-semibold mb-4">Contact Info</h5>
-                <p class="text-gray-300 text-sm mb-4">Email: realestate@gmail.com</p>
-                <p class="text-gray-300 text-sm">Phone: (123) 456-7890</p>
+                <a class="text-gray-300 text-sm mb-4" href="mailto:kaffahsilmi217@gmail.com">Email: realestate@gmail.com</a>
+                <p class="text-gray-300 text-sm">Phone: 
+                    +62 987987297</p>
             </div>
         </div>
     </div>

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 @section('content')
 <div class="py-12 bg-gray-50">
@@ -30,7 +31,7 @@
                     <div class="flex justify-center space-x-6">
                         <!-- Team Member 1 -->
                         <div class="relative group rounded-lg overflow-hidden shadow-md">
-                            <img src="/assets/avatar.png" alt="Team Member" class="w-48 h-48 object-cover rounded-full mx-auto">
+                            <img src="/assets/kaffah.jpeg" alt="Team Member" class="w-48 h-48 object-cover rounded-full mx-auto">
                             <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 flex flex-col items-center justify-center text-white transition-opacity duration-300">
                                 <p class="font-semibold">Prof M silmi Kaffah S.T M.T</p>
                                 <p class="text-sm">Founder & CEO</p>
