@@ -95,7 +95,15 @@ Route::post('/contact-us', [ContactController::class, 'submit'])->name('contact.
 
 Route::get('/search', [MasterController::class, 'search'])->name('search');
 
-
+Route::get('/privacy-policy',function(){
+return view('Property.privacy-policy');
+});
+Route::get('/faq',function(){
+    return view('Property.faq');
+    });
+Route::get('term-condition',function(){
+    return view('Property.term-condition');
+});
 // ROUTE ADMIN
 
 Route::get('/admin/login', [AdminController::class, 'showLoginForm'])->name('admin.login');
