@@ -59,15 +59,21 @@ $user = Auth::user();
 Route::get('villas', [VillaController::class, 'index'])->name('villas.index');
 Route::get('villas/{villa}', [VillaController::class, 'show'])->name('villas.show');
 Route::get('/villas/{villa}/booking', [VillaController::class, 'showBookingForm'])->name('villas.booking');
-Route::post('/villas/{villa}/booking', [VillaController::class, 'bookVilla'])->name('villas.book');
+// Route::post('/villas/{villa}/booking', [VillaController::class, 'bookVilla'])->name('villas.book');
+Route::post('/villas/{id}/book', [VillaController::class, 'bookVilla'])->name('villas.book');
+Route::get('/payment/success/{id}', [VillaController::class, 'paymentSuccess']);
+Route::get('/payment/pending/{id}', [VillaController::class, 'paymentPending']);
+Route::get('/payment/failed/{id}', [VillaController::class, 'paymentFailed']);
+Route::post('/payment/notification', [VillaController::class, 'paymentNotification']);
+Route::post('/midtrans-notification', [VillaController::class, 'midtransNotification']);
+
 Route::get('/payment/success', function () {
     return view('payment.success'); 
 });
 Route::get('/payment/pending', function () {
     return view('payment.pending'); 
 });
-Route::get('/transaction/history', [TransactionController::class, 'index'])->name('payment.history');
-Route::get('/transaksi/riwayat', [TransactionController::class, 'index'])->name('payment.history');
+Route::get('/payment/history', [VillaController::class, 'paymentHistory'])->name('payment.history');
 
 Route::post('/payment', [PaymentController::class, 'handlePayment'])->name('payment.handle');
 Route::post('/payment/callback', [PaymentController::class, 'midtransCallback']);

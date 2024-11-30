@@ -6,12 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Villa extends Model
 {
-    protected $fillable = [
-        'nama',
-        'harga',
-        'lokasi',
-        'rating',
-        'deskripsi',
-        'gambar'
+   protected $fillable = [
+        'nama', 'harga', 'lokasi', 'rating', 'deskripsi', 'gambar'
     ];
 }
