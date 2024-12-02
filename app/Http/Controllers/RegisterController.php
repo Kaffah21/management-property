@@ -28,14 +28,12 @@ class RegisterController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        // Create the user and store in the database
         User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')), // Hash the password
         ]);
 
-        // Redirect to login or another page after successful registration
         return redirect()->route('login')->with('success', 'Registration successful. Please log in.');
     }
     public function create()
@@ -44,21 +42,18 @@ class RegisterController extends Controller
     }
     public function store(Request $request)
     {
-        // Validasi input
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        // Buat pengguna baru
         User::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
-            'password' => Hash::make($validatedData['password']), // Hash password
+            'password' => Hash::make($validatedData['password']),
         ]);
 
-        // Redirect setelah berhasil
         return redirect()->route('login')->with('success', 'Akun berhasil dibuat!');
     }
 }

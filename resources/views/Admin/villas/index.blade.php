@@ -39,7 +39,7 @@
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $index + 1 + ($villas->currentPage() - 1) * $villas->perPage() }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap"><img
-                                        src="{{ Storage::url('villas/' . $villa->gambar) }}" width="100"></td>
+                                        src="{{ Storage::url('villas/' . $villa->gambar) }}" width="100" style="border-radius: 4px;"></td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $villa->nama }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">Rp {{ number_format($villa->harga) }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $villa->lokasi }}</td>

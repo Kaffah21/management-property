@@ -45,6 +45,12 @@
                     </a>
                 </li>
                 <li class="mb-2">
+                    <a href="{{ route('admin.blogs.index') }}" class="text-white hover:bg-gray-700 rounded-lg p-2 block">
+                        <i class="fas fa-blog mr-2"></i> 
+                        Blog
+                    </a>
+                </li>
+                <li class="mb-2">
                     <a href="{{ route('admin.penyewa.index') }}" class="text-white hover:bg-gray-700 rounded-lg p-2 block">
                         <i class="fas fa-user-friends mr-2"></i> 
                         Tenant Data
@@ -97,12 +103,10 @@
             const dropdown = document.getElementById(dropdownId);
             const logout = document.getElementById('logout');
 
-            // Toggle visibility of dropdown
             dropdown.classList.toggle("hidden");
 
-            // Add more spacing when the dropdown is open
             if (!dropdown.classList.contains("hidden")) {
-                logout.classList.add("mt-32"); // Increased margin for more space
+                logout.classList.add("mt-32"); 
             } else {
                 logout.classList.remove("mt-32");
             }
