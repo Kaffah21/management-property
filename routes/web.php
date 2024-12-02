@@ -1,27 +1,22 @@
 <?php
-use App\Http\Controllers\Admin\LoginController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\MasterController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\AdminController;
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Admin\VillaController as AdminVillaController;
-use App\Http\Controllers\Admin\RumahController as AdminRumahController;
 use App\Http\Controllers\RumahController;
-use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\MasterController;
 use App\Http\Controllers\VillaController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Admin\TransaksiController;
+use App\Http\Controllers\Admin\VillaController as AdminVillaController;
+use App\Http\Controllers\Admin\RumahController as AdminRumahController;
 use App\Http\Controllers\Admin\PemilikController as PemilikController;
 use App\Http\Controllers\Admin\PenyewaController as PenyewaController;
-
-
-
-
 
 Route::get('/', function () {  
     return view('master');
@@ -110,11 +105,14 @@ Route::get('/faq',function(){
 Route::get('term-condition',function(){
     return view('Property.term-condition');
 });
+Route::get('blogs', [BlogController::class, 'index'])->name('blogs.index');
+Route::get('blogs/{blog}', [BlogController::class, 'show'])->name('blogs.show');
+
 // ROUTE ADMIN
 
 Route::get('/admin/login', [AdminController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AdminController::class, 'login'])->name('admin.login.submit');
-Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
+Route::get('actionlogout', [AdminController::class, 'logout'])->name('actionlogout')->middleware('auth');
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth');
 Route::prefix('admin')->name('admin.')->group(function () {
    
@@ -143,3 +141,6 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/transaksi/rumah', [TransaksiController::class, 'index'])->name('transaksi.rumah');
 });
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::resource('blogs', App\Http\Controllers\Admin\BlogController::class);
+}); 

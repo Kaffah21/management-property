@@ -32,6 +32,7 @@
                 <ul class="space-y-3">
                     <li><a href="{{url('faq')}}" class="text-gray-300 hover:text-white transition-colors">FAQs</a></li>
                     <li><a href="{{url('term-condition')}}" class="text-gray-300 hover:text-white transition-colors">Terms & Conditions</a></li>
+                    <li><a href="{{route('blogs.index')}}" class="text-gray-300 hover:text-white transition-colors">Blog</a></li>
                     <li><a href="{{url('privacy-policy')}}" class="text-gray-300 hover:text-white transition-colors">Privacy Policy</a></li>
                 </ul>
             </div>

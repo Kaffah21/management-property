@@ -28,7 +28,7 @@ class VillaController extends Controller
             'lokasi' => 'required|string|max:255',
             'rating' => 'required|numeric|min:0|max:5',
             'deskripsi' => 'nullable|string',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validation rules
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', 
         ]);
     
         $villa = new Villa();

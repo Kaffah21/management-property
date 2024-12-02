@@ -11,17 +11,15 @@ class PaymentController extends Controller
 {
     public function handlePayment(Request $request)
     {
-        // Mengambil data property dan harga total (Anda perlu menyesuaikan sesuai konteks)
-        $rumah = Rumah::find($request->property_id); // contoh mengambil data properti
-        $totalPrice = $request->total_price; // total harga dari request atau perhitungan Anda
-        $snapToken = $request->snapToken; // snap token dari Midtrans
+        $rumah = Rumah::find($request->property_id); 
+        $totalPrice = $request->total_price; 
+        $snapToken = $request->snapToken; 
 
-        // Simpan data transaksi
         $transaction = Transaction::create([
             'user_id' => Auth::id(),
             'property_id' => $rumah->id,
             'total_price' => $totalPrice,
-            'status' => 'pending', // 'pending' atau sesuaikan dengan status yang diinginkan
+            'status' => 'pending', 
         ]);
 
         return view('payment.view', compact('transaction', 'snapToken'));
@@ -48,3 +46,4 @@ class PaymentController extends Controller
 }
 
 }
+ 

@@ -8,6 +8,7 @@
             <a href="{{ route('master') }}" class="text-black hover:text-gray font-semibold">Home</a>
             <a href="{{route('rumahs.index')}}" class="text-black hover:text-gray font-semibold"> Rumah</a>
             <a href="{{route('villas.index')}}" class="text-black hover:text-gray font-semibold"> Villa</a>
+            <a href="{{route('blogs.index')}}" class="text-black hover:text-gray font-semibold"> Blog</a>
             <a href="{{url('contact-us')}}" class="text-black hover:text-gray font-semibold">Contact Us</a>
             <a href="{{url('about')}}" class="text-black hover:text-gray font-semibold">About Us</a>
         </div> 
@@ -52,6 +53,7 @@
             <a href="{{ route('master') }}" class="text-black hover:text-gray font-semibold py-2">Home</a>
             <a href="{{route('rumahs.index')}}" class="text-black hover:text-gray font-semibold py-2"> Rumah</a>
             <a href="{{route('villas.index')}}" class="text-black hover:text-gray font-semibold py-2"> Villa</a>
+            <a href="{{route('blogs.index')}}" class="text-black hover:text-gray font-semibold"> Blog</a>
             <a href="{{url('contact')}}" class="text-black hover:text-gray font-semibold py-2">Contact Us</a>
             <a href="{{url('about')}}" class="text-black hover:text-gray font-semibold py-2">About Us</a>
 
