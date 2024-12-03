@@ -7,6 +7,7 @@ use Midtrans\Snap;
 use Midtrans\Notification;
 use App\Models\Villa;
 use App\Models\VillaTransaction;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class VillaController extends Controller
@@ -157,8 +158,12 @@ class VillaController extends Controller
     // }
     public function paymentHistory()
     {
-        // Ambil semua transaksi yang diurutkan berdasarkan waktu terbaru
-        $transactions = VillaTransaction::with('villa')->latest()->paginate(10);
+        $userEmail = Auth::user()->email;
+
+        $transactions = VillaTransaction::with('villa')
+            ->where('user_email', $userEmail) 
+            ->latest()
+            ->paginate(10);
     
         return view('payment.history', compact('transactions'));
     }

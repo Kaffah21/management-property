@@ -22,13 +22,13 @@ class Transaction extends Model
     return $this->belongsTo(Villa::class);
 }
 
-    // Definisikan relasi dengan model User
+ // Mendefinisikan relasi dengan model User
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    // Definisikan relasi dengan model Property
+    // Mendefinisikan relasi dengan model Property
     public function property()
     {
         return $this->belongsTo(Property::class);

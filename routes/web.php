@@ -68,7 +68,7 @@ Route::get('/payment/success', function () {
 Route::get('/payment/pending', function () {
     return view('payment.pending'); 
 });
-Route::get('/payment/history', [VillaController::class, 'paymentHistory'])->name('payment.history');
+Route::get('/payment/history', [VillaController::class, 'paymentHistory'])->name('payment.history')->middleware('auth');
 
 Route::post('/payment', [PaymentController::class, 'handlePayment'])->name('payment.handle');
 Route::post('/payment/callback', [PaymentController::class, 'midtransCallback']);
@@ -77,8 +77,9 @@ Route::post('/payment/callback', [PaymentController::class, 'midtransCallback'])
 Route::get('rumah', [RumahController::class, 'index'])->name('rumahs.index');
 Route::get('rumah/{rumah}', [RumahController::class, 'show'])->name('rumahs.show');
 Route::get('rumah/{id}', [RumahController::class, 'show']);
+Route::post('/rumah/{id}/book', [RumahController::class, 'bookRumah'])->name('rumahs.book');
+Route::post('/midtrans/notification', [RumahController::class, 'notificationHandler'])->name('midtrans.notification');
 Route::get('rumah/{id}/booking', [RumahController::class, 'showBookingForm']);
-Route::post('/rumahs/{rumah}/booking', [RumahController::class, 'bookRumah'])->name('rumahs.book');
 Route::get('payment/success', [RumahController::class, 'paymentSuccess']);
 Route::get('payment/pending', [RumahController::class, 'paymentPending']);
 

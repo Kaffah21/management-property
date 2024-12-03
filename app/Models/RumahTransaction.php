@@ -5,14 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class VillaTransaction extends Model
+class RumahTransaction extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        
-        'villa_id',
-        'order_id',
+        'rumah_id',
         'user_name',
         'user_email',
         'guests',
@@ -22,8 +20,9 @@ class VillaTransaction extends Model
         'payment_status',
     ];
 
-    public function villa()
-    {
-        return $this->belongsTo(Villa::class);
-    }
+public function rumah()
+{
+    return $this->belongsTo(Rumah::class);
+}
+
 }

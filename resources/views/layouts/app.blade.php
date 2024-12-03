@@ -9,7 +9,7 @@
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">
     <!-- Navbar -->
-    @include('partials.navbar')
+    @include('layouts.partials.navbar')
 
     <!-- Main Content -->
     <main class="flex-1 container mx-auto my-4">
@@ -17,7 +17,7 @@
     </main>
 
     <!-- Footer -->
-    @include('partials.footer')
+    @include('layouts.partials.footer')
 
     <!-- Optional Scripts -->
     @yield('scripts')
