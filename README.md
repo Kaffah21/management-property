@@ -20,3 +20,12 @@ The **Property Management System** is a web application designed to facilitate t
 
 ---
 
+## Technologies Used
+- **Framework**: Laravel
+- **Frontend**: Tailwind CSS
+- **Database**: MySQL
+- **Payment Integration**: Midtrans
+- **Email**: Gmail SMTP for email services
+
+---
+
