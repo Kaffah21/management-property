@@ -24,12 +24,12 @@
                 <tbody class="bg-white divide-y divide-gray-200">
                     @foreach($penyewa as $item)
                     <tr>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $loop->iteration }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $item->name }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $item->email }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $item->phone }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $item->address }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap flex space-x-4">
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-700">{{ $loop->iteration }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-700">{{ $item->name }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-700">{{ $item->email }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-700">{{ $item->phone }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-700">{{ $item->address }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap  flex space-x-4">
                             <div class="relative group">
                                 <a href="{{ route('admin.penyewa.edit', $item->id) }}" class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 flex items-center" aria-label="Edit Penyewa">
                                     <i class="fas fa-pencil-alt fs-2"></i>

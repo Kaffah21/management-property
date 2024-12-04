@@ -30,13 +30,13 @@
                     @foreach($rumahs as $index => $rumah)
                     <tr>
                         <!-- Adjust the "No" column to account for pagination -->
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $index + 1 + ($rumahs->currentPage() - 1) * $rumahs->perPage() }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap"><img src="{{ Storage::url('rumah/'.$rumah->gambar) }}" width="100" style="border-radius: 4px"></td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $rumah->nama }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">Rp {{ number_format($rumah->harga) }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $rumah->lokasi }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $rumah->rating }}/5</td>
-                        <td class="px-6 py-4 whitespace-nowrap flex space-x-4">
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-700">{{ $index + 1 + ($rumahs->currentPage() - 1) * $rumahs->perPage() }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-700"><img src="{{ Storage::url('rumah/'.$rumah->gambar) }}" width="100" style="border-radius: 4px"></td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-700">{{ $rumah->nama }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-700">Rp {{ number_format($rumah->harga) }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-700">{{ $rumah->lokasi }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-700">{{ $rumah->rating }}/5</td>
+                        <td class="px-6 py-4 whitespace-nowrap  flex space-x-4">
                             <div class="relative group">
                                 <a href="{{ route('admin.rumah.edit', $rumah) }}" class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 flex items-center">
                                     <i class="fas fa-pencil-alt fs-2"></i>
