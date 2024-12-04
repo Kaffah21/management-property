@@ -37,14 +37,14 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         @foreach ($villas as $index => $villa)
                             <tr>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $index + 1 + ($villas->currentPage() - 1) * $villas->perPage() }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap"><img
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-700">{{ $index + 1 + ($villas->currentPage() - 1) * $villas->perPage() }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-700"><img
                                         src="{{ Storage::url('villas/' . $villa->gambar) }}" width="100" style="border-radius: 4px;"></td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $villa->nama }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">Rp {{ number_format($villa->harga) }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $villa->lokasi }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $villa->rating }}/5</td>
-                                <td class="px-6 py-4 whitespace-nowrap flex space-x-2">
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-700">{{ $villa->nama }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-700">Rp {{ number_format($villa->harga) }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-700">{{ $villa->lokasi }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-700">{{ $villa->rating }}/5</td>
+                                <td class="px-6 py-4 whitespace-nowrap  flex space-x-2">
                                     <a href="{{ route('admin.villas.edit', $villa) }}"
                                         class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 flex items-center"
                                         data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">

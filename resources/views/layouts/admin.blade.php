@@ -45,11 +45,26 @@
                     </a>
                 </li>
                 <li class="mb-2">
-                    <a href="{{ route('admin.blogs.index') }}" class="text-white hover:bg-gray-700 rounded-lg p-2 block">
-                        <i class="fas fa-blog mr-2"></i> 
-                        Blog
-                    </a>
+                    <div class="relative">
+                        <a href="#" class="text-white hover:bg-gray-700 rounded-lg p-2 block flex items-center" onclick="toggleDropdown(event, 'contentDropdown')">
+                            <i class="fas fa-layer-group mr-2"></i>
+                            Content
+                        </a>
+                        
+                        <!-- Dropdown menu -->
+                        <div id="contentDropdown" class="hidden absolute left-0 mt-2 w-48 bg-gray-800 rounded-lg shadow-lg ml-4">
+                            <a href="{{route('admin.blogs.index')}}" class="text-white hover:bg-gray-700 rounded-lg p-2 block">
+                                <i class="fas fa-blog mr-2"></i>
+                                Blog
+                            </a>
+                            <a href="{{route('admin.faq.index')}}" class="text-white hover:bg-gray-700 rounded-lg p-2 block">
+                                <i class="fas fa-question-circle mr-2"></i>
+                                Faq
+                            </a>
+                        </div>
+                    </div>
                 </li>
+              
                 <li class="mb-2">
                     <a href="{{ route('admin.penyewa.index') }}" class="text-white hover:bg-gray-700 rounded-lg p-2 block">
                         <i class="fas fa-user-friends mr-2"></i> 

@@ -27,15 +27,15 @@
                 <tbody class="bg-white divide-y divide-gray-200">
                     @foreach ($blogs as $index => $blog)
                     <tr>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $index + 1 + ($blogs->currentPage() - 1) * $blogs->perPage() }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-700">{{ $index + 1 + ($blogs->currentPage() - 1) * $blogs->perPage() }}</td>
                         
                         <!-- Menampilkan Gambar -->
-                        <td class="px-6 py-4 whitespace-nowrap">
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-700">
                             <img src="{{ asset('storage/' . $blog->image) }}" alt="Blog Image" class="w-16 h-16 object-cover " style="border-radius: 4px">
                         </td>
                         
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $blog->title }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $blog->date }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-700">{{ $blog->title }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-700">{{ $blog->date }}</td>
                         <td class="px-6 py-4 whitespace-nowrap flex space-x-4">
                             <div class="relative group">
                                 <a href="{{ route('admin.blogs.edit', $blog->id) }}" class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 flex items-center">

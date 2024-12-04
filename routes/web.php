@@ -12,11 +12,14 @@ use App\Http\Controllers\VillaController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\FaqController;  // Untuk controller utama
 use App\Http\Controllers\Admin\TransaksiController;
 use App\Http\Controllers\Admin\VillaController as AdminVillaController;
 use App\Http\Controllers\Admin\RumahController as AdminRumahController;
 use App\Http\Controllers\Admin\PemilikController as PemilikController;
 use App\Http\Controllers\Admin\PenyewaController as PenyewaController;
+use App\Http\Controllers\Admin\FaqController as AdminFaqController;
+
 
 Route::get('/', function () {  
     return view('master');
@@ -100,9 +103,11 @@ Route::get('/search', [MasterController::class, 'search'])->name('search');
 Route::get('/privacy-policy',function(){
 return view('Property.privacy-policy');
 });
-Route::get('/faq',function(){
-    return view('Property.faq');
-    });
+// Route::get('/faq',function(){
+//     return view('Property.faq');
+//     });
+Route::resource('faq', FaqController::class); 
+
 Route::get('term-condition',function(){
     return view('Property.term-condition');
 });
@@ -145,3 +150,10 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('blogs', App\Http\Controllers\Admin\BlogController::class);
 }); 
+Route::resource('admin/faq', AdminFaqController::class);
+Route::get('/admin/faq/create', [AdminFaqController::class, 'create'])->name('admin.faq.create');
+Route::post('/admin/faq', [AdminFaqController::class, 'store'])->name('admin.faq.store');
+Route::get('/admin/faq/{faq}/edit', [AdminFaqController::class, 'edit'])->name('admin.faq.edit');
+Route::delete('/admin/faq/{faq}', [AdminFaqController::class, 'destroy'])->name('admin.faq.destroy');
+Route::get('/admin/faq', [AdminFaqController::class, 'index'])->name('admin.faq.index');
+Route::put('/admin/faq/{faq}', [AdminFaqController::class, 'update'])->name('admin.faq.update');
