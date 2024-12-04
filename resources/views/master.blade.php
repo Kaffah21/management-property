@@ -27,7 +27,7 @@
     <div class="background-image"></div>
 
     <!-- Navbar -->
-    @include('partials.navbar')
+    @include('layouts.partials.navbar')
 
     <!-- Main Content -->
     <div class="container mx-auto p-8" style="margin-top:50px;">
@@ -131,7 +131,7 @@
     </div>
 
 
-    @include('partials.footer')
+    @include('layouts.partials.footer')
 
     <script>
         const button = document.querySelector('button[id="options-menu"]');

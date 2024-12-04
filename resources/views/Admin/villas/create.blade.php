@@ -60,9 +60,16 @@
                 </div>
 
                 <div class="mb-5">
-                    <label class="block text-gray-700 font-semibold mb-2">Gambar</label>
-                    <input type="file" name="gambar" 
-                           class="w-full px-4 py-2 border border-gray-300 rounded-md @error('gambar') border-red-500 @enderror">
+                    <label class="block text-gray-700 font-semibold mb-2">Image</label>
+                    <div class="relative w-full">
+                        <input type="file" name="gambar" id="uploadImage" 
+                               class="w-full px-4 py-2 border border-gray-300 rounded-md opacity-0 absolute top-0 left-0 cursor-pointer">
+                        <div id="previewContainer" 
+                             class="flex items-center justify-center w-full h-48 border-2 border-dashed border-gray-300 rounded-md bg-gray-100">
+                            <span id="uploadText" class="text-gray-500">Click to upload an image</span>
+                            <img id="previewImage" class="hidden w-full h-full object-cover rounded-md" />
+                        </div>
+                    </div>
                     @error('gambar')
                         <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
                     @enderror
@@ -85,5 +92,22 @@
         .catch(error => {
             console.error(error);
         });
+        const uploadInput = document.getElementById('uploadImage');
+    const previewContainer = document.getElementById('previewContainer');
+    const previewImage = document.getElementById('previewImage');
+    const uploadText = document.getElementById('uploadText');
+
+    uploadInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                previewImage.src = e.target.result;
+                previewImage.classList.remove('hidden');
+                uploadText.classList.add('hidden');
+            }
+            reader.readAsDataURL(file);
+        }
+    });   
 </script>
 @endsection
