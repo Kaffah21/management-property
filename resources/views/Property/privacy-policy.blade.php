@@ -77,7 +77,7 @@
                     If you have any questions or concerns about this privacy policy, please contact us at:
                 </p>
                 <p class="text-gray-700 leading-relaxed">
-                    Email: <a href="mailto:realestate@gmail.com" class="text-blue-500 hover:underline">realestate@gmail.com</a><br>
+                    Email: <a href="mailto:kaffahsilmi217@gmail.com" class="text-blue-500 hover:underline">realestate@gmail.com</a><br>
                     Phone: 
                     +62 987987297
                 </p>            </div>

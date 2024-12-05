@@ -98,10 +98,11 @@
                     </div>
                 </li>
                 <li class="mb-2" id="logout">
-                    <a href="{{ route('actionlogout') }}" class="text-red-400 hover:bg-gray-700 rounded-lg p-2 block">
-                        <i class="fas fa-sign-out-alt mr-2"></i> 
-                        Logout
-                    </a>
+                    <form method="POST" action="{{ route('admin.logout') }}">
+                        @csrf
+                        <button type="submit" class="text-red-500 hover:text-red-700">Logout</button>
+                    </form>
+                    
                 </li>
             </ul>
         </div>
