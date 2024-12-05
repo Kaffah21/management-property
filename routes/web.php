@@ -1,7 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
@@ -12,16 +11,17 @@ use App\Http\Controllers\VillaController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\FaqController;  // Untuk controller utama
+use App\Http\Controllers\FaqController;  
 use App\Http\Controllers\Admin\TransaksiController;
 use App\Http\Controllers\Admin\VillaController as AdminVillaController;
 use App\Http\Controllers\Admin\RumahController as AdminRumahController;
 use App\Http\Controllers\Admin\PemilikController as PemilikController;
 use App\Http\Controllers\Admin\PenyewaController as PenyewaController;
 use App\Http\Controllers\Admin\FaqController as AdminFaqController;
+use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 
 
-Route::get('/', function () {  
+Route::get('/', function () {   
     return view('master');
 });
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -47,12 +47,15 @@ Route::get('master', [MasterController::class, 'index'])->name('master');
 
 // Route::get('master', [MasterController::class, 'index'])->name('master')->middleware('auth');
 
-Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
+// Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
+// Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register.form');
+// Route::get('/register', [RegisterController::class, 'register'])->name('register');
+// Route::get('/register', [RegisterController::class, 'create'])->name('register');
+// Route::post('/register', [RegisterController::class, 'store']);
+// $user = Auth::user(); 
 Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register.form');
-Route::get('/register', [RegisterController::class, 'register'])->name('register');
-Route::get('/register', [RegisterController::class, 'create'])->name('register');
-Route::post('/register', [RegisterController::class, 'store']);
-$user = Auth::user(); 
+Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 
 Route::get('villas', [VillaController::class, 'index'])->name('villas.index');
 Route::get('villas/{villa}', [VillaController::class, 'show'])->name('villas.show');
@@ -103,9 +106,7 @@ Route::get('/search', [MasterController::class, 'search'])->name('search');
 Route::get('/privacy-policy',function(){
 return view('Property.privacy-policy');
 });
-// Route::get('/faq',function(){
-//     return view('Property.faq');
-//     });
+
 Route::resource('faq', FaqController::class); 
 
 Route::get('term-condition',function(){
@@ -116,12 +117,14 @@ Route::get('blogs/{blog}', [BlogController::class, 'show'])->name('blogs.show');
 
 // ROUTE ADMIN
 
-Route::get('/admin/login', [AdminController::class, 'showLoginForm'])->name('admin.login');
-Route::post('/admin/login', [AdminController::class, 'login'])->name('admin.login.submit');
-Route::get('actionlogout', [AdminController::class, 'logout'])->name('actionlogout')->middleware('auth');
-Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth');
 Route::prefix('admin')->name('admin.')->group(function () {
-   
+    Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AdminAuthController::class, 'login'])->name('login.submit');
+    Route::middleware('auth:admin')->group(function () {
+        Route::get('/dashboard', [AdminAuthController::class, 'dashboard'])->name('dashboard');
+    });
+    Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
+
 });
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
     Route::resource('villas', AdminVillaController::class);
