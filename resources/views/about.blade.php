@@ -9,7 +9,7 @@
             <div class="p-6 text-gray-900">
                 <!-- About Us Header -->
                 <div class="text-center mb-10">
-                    <h1 class="text-4xl font-extrabold text-gray-800">About Us</h1>
+                    <h1 class="text-2xl font-bold text-gray-800">About Us</h1>
                 </div>
 
                 <!-- About Us Content (Image + Description) -->
