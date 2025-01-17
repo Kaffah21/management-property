@@ -4,7 +4,7 @@
 <div class="container mx-auto p-6 md:p-12">
     <!-- Page Title -->
     <h1 class="text-2xl font-bold  text-gray-900 mb-10 text-center">Blog</h1>
-
+    <div class="py-12 bg-gray-50">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         @foreach ($blogs as $blog)
         <div class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl duration-300">
@@ -19,6 +19,7 @@
             </div>
         </div>
         @endforeach
+    </div>
     </div>
 
     <!-- Pagination -->

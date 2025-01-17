@@ -4,7 +4,7 @@
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-<div class="py-12 bg-gray-50">
+
     <div class="max-w-6xl mx-auto p-6 bg-white shadow-lg rounded-lg flex flex-col lg:flex-row">
         <!-- Left Column: Contact Info & Social Links -->
         <div class="lg:w-1/3 mb-8 lg:mb-0 flex flex-col items-center justify-center">
@@ -61,6 +61,6 @@
             </form>
         </div>
     </div>
-</div>
+
 
 @endsection
