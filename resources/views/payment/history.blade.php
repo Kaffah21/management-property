@@ -7,7 +7,7 @@
     <h2 class="text-2xl font-semibold mb-6">Payment History</h2>
 
     @if($transactions->isEmpty())
-        <p class="text-gray-500">No transactions found.</p>
+        <p class="text-gray-500">No transactions </p>
     @else
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             @foreach ($transactions as $transaction)

@@ -124,8 +124,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/dashboard', [AdminAuthController::class, 'dashboard'])->name('dashboard');
     });
     Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
-
 });
+
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
     Route::resource('villas', AdminVillaController::class);
 });
@@ -133,30 +133,30 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
     Route::resource('rumah', AdminRumahController::class);
 });
+
 Route::get('/admin/rumah/{id}/edit', [RumahController::class, 'edit'])->name('admin.rumah.edit');
-Route::patch('/admin/rumah/{rumah}', [RumahController::class, 'update'])->name('admin.rumah.update'); // Untuk mengirim data pembaruan
-
-
+Route::patch('/admin/rumah/{rumah}', [RumahController::class, 'update'])->name('admin.rumah.update');
 
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('penyewa', PenyewaController::class);
     Route::resource('pemilik', PemilikController::class);
 });
 
-
-Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
-    Route::resource('pemilik', PemilikController::class);
-});
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/transaksi/rumah', [TransaksiController::class, 'index'])->name('transaksi.rumah');
 });
+
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('blogs', App\Http\Controllers\Admin\BlogController::class);
-}); 
-Route::resource('admin/faq', AdminFaqController::class);
-Route::get('/admin/faq/create', [AdminFaqController::class, 'create'])->name('admin.faq.create');
-Route::post('/admin/faq', [AdminFaqController::class, 'store'])->name('admin.faq.store');
-Route::get('/admin/faq/{faq}/edit', [AdminFaqController::class, 'edit'])->name('admin.faq.edit');
-Route::delete('/admin/faq/{faq}', [AdminFaqController::class, 'destroy'])->name('admin.faq.destroy');
-Route::get('/admin/faq', [AdminFaqController::class, 'index'])->name('admin.faq.index');
-Route::put('/admin/faq/{faq}', [AdminFaqController::class, 'update'])->name('admin.faq.update');
+});
+
+Route::prefix('admin')->name('admin.faq.')->middleware('auth')->group(function () {
+    Route::resource('faq', AdminFaqController::class);
+    Route::get('/faq/create', [AdminFaqController::class, 'create'])->name('create');
+    Route::post('/faq', [AdminFaqController::class, 'store'])->name('store');
+    Route::get('/faq/{faq}/edit', [AdminFaqController::class, 'edit'])->name('edit');
+    Route::delete('/faq/{faq}', [AdminFaqController::class, 'destroy'])->name('destroy');
+    Route::get('/faq', [AdminFaqController::class, 'index'])->name('index');
+    Route::put('/faq/{faq}', [AdminFaqController::class, 'update'])->name('update');
+});
+

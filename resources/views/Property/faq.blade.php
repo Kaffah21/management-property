@@ -3,8 +3,9 @@
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
 @section('content')
+<div class="py-12 bg-gray-50">
     <div class="max-w-7xl mx-auto px-6 py-12">
-        <h1 class="text-4xl font-semibold text-center mb-8">Frequently Asked Questions (FAQ)</h1>
+        <h1 class="text-2xl font-semibold text-center mb-8">Frequently Asked Questions (FAQ)</h1>
 
         @if($faqs->isEmpty())
             <p>No FAQs available at the moment.</p>
@@ -25,7 +26,7 @@
             @endforeach
         @endif
     </div>
-
+</div>
     <!-- Script for Accordion Functionality -->
     <script>
         document.querySelectorAll('button').forEach(button => {

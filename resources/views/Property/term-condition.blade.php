@@ -4,6 +4,7 @@
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 
 @section('content')
+<div class="py-12 bg-gray-50">
 <div class="max-w-7xl mx-auto px-6 py-12">
     <h1 class="text-4xl font-semibold text-center text-black mb-8">Terms and Conditions</h1>
 
@@ -105,5 +106,6 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection

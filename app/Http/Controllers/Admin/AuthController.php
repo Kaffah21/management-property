@@ -3,6 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Rumah;
+use App\Models\RumahTransaction;
+use App\Models\User;
+use App\Models\Villa;
+use App\Models\VillaTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,7 +37,15 @@ class AuthController extends Controller
     // Dashboard
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $totalVilla = Villa::count(); 
+        $totalRumah = Rumah::count();
+        $totalUser = User::count();
+        $totalRTransaction = RumahTransaction::count();
+        $totalVTransaction = VillaTransaction::count();
+        $totalTransaction = $totalRTransaction + $totalVTransaction ;
+
+
+        return view('admin.dashboard', compact('totalVilla','totalRumah','totalUser','totalTransaction'));
     }
 
     public function logout()

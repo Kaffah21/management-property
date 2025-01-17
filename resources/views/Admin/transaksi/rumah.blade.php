@@ -64,7 +64,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="7" class="text-center py-4 text-gray-500">No transactions found.</td>
+                                <td colspan="7" class="text-center py-4 text-gray-500">No transactions </td>
                             </tr>
                         @endforelse
                     </tbody>

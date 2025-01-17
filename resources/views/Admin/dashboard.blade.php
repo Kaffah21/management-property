@@ -11,8 +11,8 @@
                 </svg>
             </div>
             <div class="ml-4">
-                <h3 class="text-gray-500 text-sm">Total Transaksi</h3>
-                <span class="text-2xl font-bold">120</span>
+                <h3 class="text-gray-500 text-sm">User</h3>
+                <span class="text-2xl font-bold">{{ $totalUser }}</span>
             </div>
         </div>
     </div>
@@ -26,8 +26,8 @@
                 </svg>
             </div>
             <div class="ml-4">
-                <h3 class="text-gray-500 text-sm">Pendapatan</h3>
-                <span class="text-2xl font-bold">$1,200</span>
+                <h3 class="text-gray-500 text-sm">Total Villa</h3>
+                <span class="text-2xl font-bold">{{ $totalVilla }}</span>
             </div>
         </div>
     </div>
@@ -41,8 +41,8 @@
                 </svg>
             </div>
             <div class="ml-4">
-                <h3 class="text-gray-500 text-sm">Statistik</h3>
-                <span class="text-2xl font-bold">45.5K</span>
+                <h3 class="text-gray-500 text-sm">Total Rumah</h3>
+                <span class="text-2xl font-bold">{{ $totalRumah }}</span>
             </div>
         </div>
     </div>
@@ -56,8 +56,8 @@
                 </svg>
             </div>
             <div class="ml-4">
-                <h3 class="text-gray-500 text-sm">Orders</h3>
-                <span class="text-2xl font-bold">250</span>
+                <h3 class="text-gray-500 text-sm">Transaction</h3>
+                <span class="text-2xl font-bold">{{$totalTransaction}}</span>
             </div>
         </div>
     </div>
