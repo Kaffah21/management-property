@@ -67,6 +67,8 @@ Route::get('/payment/pending/{id}', [VillaController::class, 'paymentPending']);
 Route::get('/payment/failed/{id}', [VillaController::class, 'paymentFailed']);
 Route::post('/payment/notification', [VillaController::class, 'paymentNotification']);
 Route::post('/midtrans-notification', [VillaController::class, 'midtransNotification']);
+Route::post('/payment/update-status', [VillaController::class, 'updateStatus'])->name('payment.updateStatus');
+
 
 Route::get('/payment/success', function () {
     return view('payment.success'); 
@@ -88,6 +90,8 @@ Route::post('/midtrans/notification', [RumahController::class, 'notificationHand
 Route::get('rumah/{id}/booking', [RumahController::class, 'showBookingForm']);
 Route::get('payment/success', [RumahController::class, 'paymentSuccess']);
 Route::get('payment/pending', [RumahController::class, 'paymentPending']);
+Route::post('/rumah/update-status', [RumahController::class, 'updateStatus']);
+
 
 
 Route::get('/about', function () {
