@@ -79,7 +79,7 @@ class RumahController extends Controller
 
         $snapToken = Snap::getSnapToken($transactionDetails);
 
-        return view('rumahs.payment', compact('snapToken', 'rumah', 'totalPrice'));
+        return view('rumahs.payment', compact('snapToken', 'rumah', 'totalPrice','transaction'));
     }
      
     public function midtransNotification(Request $request)
@@ -123,6 +123,24 @@ class RumahController extends Controller
 
     return view('payment.history', compact('transactions'));
 }
+public function updateStatus(Request $request)
+{
+    $request->validate([
+        'transaction_id' => 'required|exists:rumah_transactions,id', // Validasi transaksi harus ada
+    ]);
+
+    $transaction = RumahTransaction::find($request->transaction_id);
+
+    if ($transaction) {
+        $transaction->payment_status = 'success'; // Ubah status menjadi success
+        $transaction->save();
+
+        return response()->json(['message' => 'Status pembayaran berhasil diperbarui.']);
+    }
+
+    return response()->json(['message' => 'Transaksi tidak ditemukan.'], 404);
+}
+
 
     public function paymentSuccess()
     {

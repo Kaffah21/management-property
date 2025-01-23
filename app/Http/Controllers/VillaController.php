@@ -71,7 +71,7 @@ class VillaController extends Controller
 
         $snapToken = Snap::getSnapToken($transactionDetails);
 
-        return view('villas.payment', compact('snapToken', 'villa', 'totalPrice'));
+        return view('villas.payment', compact('snapToken', 'villa', 'totalPrice','transaction'));
     }
 
     public function paymentNotification(Request $request)
@@ -156,6 +156,26 @@ class VillaController extends Controller
 
     //     return response()->json(['status' => 'success']);
     // }
+
+    public function updateStatus(Request $request)
+{
+    $request->validate([
+        'transaction_id' => 'required|exists:villa_transactions,id',
+    ]);
+
+    $transaction = VillaTransaction::find($request->transaction_id);
+
+    if ($transaction) {
+        $transaction->payment_status = 'success'; // Ubah status menjadi success
+        $transaction->save();
+
+        return response()->json(['message' => 'Status pembayaran berhasil diperbarui.']);
+    }
+
+    return response()->json(['message' => 'Transaksi tidak ditemukan.'], 404);
+}
+
+
     public function paymentHistory()
     {
         $userEmail = Auth::user()->email;
