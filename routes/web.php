@@ -21,7 +21,7 @@ use App\Http\Controllers\Admin\PenyewaController as PenyewaController;
 use App\Http\Controllers\Admin\FaqController as AdminFaqController;
 
 
-Route::get('/', function () {  
+Route::get('/', function () {
     return view('master');
 });
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -52,7 +52,7 @@ Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('
 Route::get('/register', [RegisterController::class, 'register'])->name('register');
 Route::get('/register', [RegisterController::class, 'create'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
-$user = Auth::user(); 
+$user = Auth::user();
 
 Route::get('villas', [VillaController::class, 'index'])->name('villas.index');
 Route::get('villas/{villa}', [VillaController::class, 'show'])->name('villas.show');
@@ -66,10 +66,10 @@ Route::post('/payment/notification', [VillaController::class, 'paymentNotificati
 Route::post('/midtrans-notification', [VillaController::class, 'midtransNotification']);
 
 Route::get('/payment/success', function () {
-    return view('payment.success'); 
+    return view('payment.success');
 });
 Route::get('/payment/pending', function () {
-    return view('payment.pending'); 
+    return view('payment.pending');
 });
 Route::get('/payment/history', [VillaController::class, 'paymentHistory'])->name('payment.history')->middleware('auth');
 
@@ -106,7 +106,7 @@ return view('Property.privacy-policy');
 // Route::get('/faq',function(){
 //     return view('Property.faq');
 //     });
-Route::resource('faq', FaqController::class); 
+Route::resource('faq', FaqController::class);
 
 Route::get('term-condition',function(){
     return view('Property.term-condition');
@@ -121,7 +121,7 @@ Route::post('/admin/login', [AdminController::class, 'login'])->name('admin.logi
 Route::get('actionlogout', [AdminController::class, 'logout'])->name('actionlogout')->middleware('auth');
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth');
 Route::prefix('admin')->name('admin.')->group(function () {
-   
+
 });
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
     Route::resource('villas', AdminVillaController::class);
@@ -149,7 +149,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
 });
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('blogs', App\Http\Controllers\Admin\BlogController::class);
-}); 
+});
 Route::resource('admin/faq', AdminFaqController::class);
 Route::get('/admin/faq/create', [AdminFaqController::class, 'create'])->name('admin.faq.create');
 Route::post('/admin/faq', [AdminFaqController::class, 'store'])->name('admin.faq.store');

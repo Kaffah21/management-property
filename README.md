@@ -3,6 +3,13 @@
 ## 📖 Overview
 The **Property Management System** is a web application designed to facilitate the management and booking of properties, specifically villas and houses. This platform allows users to explore available properties, book them conveniently, and manage property-related data efficiently.
 
+![Login](public/assets/login.png)
+![User](public/assets/frontuser.png)
+![Footer](public/assets/footer.png)
+![Daseboard](public/assets/dashboard.png)
+![Tabel](public/assets/tabel.png)
+
+
 ---
 
 ## 🚀 Features
@@ -29,3 +36,9 @@ The **Property Management System** is a web application designed to facilitate t
 
 ---
 
+## Acount
+- **Username**: superadmin@gmail.com
+- **Password**: 123123123
+
+
+---
