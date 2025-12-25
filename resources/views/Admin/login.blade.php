@@ -17,10 +17,13 @@
     <!-- Login Form Container -->
     <div class="relative z-10 flex items-center justify-center min-h-screen">
         <div class="bg-white  p-8 rounded-lg shadow-md w-full max-w-sm">
+              {{-- <div class="flex justify-center mb-6">
+                <img src="/assets/logo.png" alt="Logo" class="h-16">
+              </div> --}}
             <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Admin Login</h2>
 
             <!-- Form login -->
-            <form method="POST" action="{{ route('admin.login.submit') }}">
+            <form class="form w-100" method="POST" action="{{ route('admin.login.submit') }}">
                 @csrf
                 <div class="mb-4">
                     <label for="email" class="block text-gray-700 font-semibold">Email</label>

@@ -101,10 +101,10 @@
     </div>
 
     <script>
-        const basePrice = {{ $rumah->harga }}; // Store base price for calculations
+        const basePrice = {{ $rumah->harga }}; // perhitungan total harga
         const isAuthenticated = @json(Auth::check());
 
-        // Function to increment guest count
+        // Function untuk menambah tamu
         function incrementGuests() {
             let countSpan = document.getElementById('guestCount');
             let hiddenInput = document.getElementById('guests');
@@ -116,7 +116,7 @@
             }
         }
 
-        // Function to decrement guest count
+        // Function untuk mengurangi tamu
         function decrementGuests() {
             let countSpan = document.getElementById('guestCount');
             let hiddenInput = document.getElementById('guests');
@@ -144,12 +144,12 @@
 
             checkInInput.setAttribute('min', today);
 
-            // Update the minimum check-out date when the check-in date is selected
+            // tanggal minimal checkout hari ini
             checkInInput.addEventListener('change', function() {
                 const selectedCheckInDate = checkInInput.value;
                 checkOutInput.setAttribute('min', selectedCheckInDate);
 
-                // Reset check-out date if it’s before the new check-in date
+                // atur ulang tanggal chekin
                 if (checkOutInput.value && checkOutInput.value < selectedCheckInDate) {
                     checkOutInput.value = selectedCheckInDate;
                 }

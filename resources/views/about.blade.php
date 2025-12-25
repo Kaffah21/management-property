@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 @section('content')
-<div class="py-12 bg-gray-50">
+
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-md sm:rounded-lg">
             <div class="p-6 text-gray-900">
@@ -74,7 +74,7 @@
                     <h2 class="text-2xl font-semibold text-gray-800 mb-4">Our Location</h2>
                     <div class="relative w-full h-80">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.2719377547496!2d108.32438897409105!3d-7.323321492684871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f5eba1b06f52f%3A0xaf882382d9de1508!2sSMK%20Negeri%201%20Ciamis!5e0!3m2!1sid!2sid!4v1731295450618!5m2!1sid!2sid"
+                        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d247.34523381486764!2d108.26437052339321!3d-7.294898644343314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sid!2sid!4v1737096036074!5m2!1sid!2sid"
                             width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
@@ -83,5 +83,5 @@
             </div>
         </div>
     </div>
-</div>
+
 @endsection

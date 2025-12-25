@@ -48,26 +48,48 @@
 
 <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ env('MIDTRANS_CLIENT_KEY') }}"></script>
 <script type="text/javascript">
-    document.getElementById('pay-button').onclick = function () {
-        snap.pay('{{ $snapToken }}', {
-            onSuccess: function(result) {
-                console.log(result);
-                alert("Pembayaran berhasil!");
-                window.location.href = "/payment/success";
-            },
-            onPending: function(result) {
-                console.log(result);
-                alert("Pembayaran tertunda, silakan cek status pembayaran.");
-                window.location.href = "/payment/pending";
-            },
-            onError: function(result) {
-                console.log(result);
-                alert("Pembayaran gagal, silakan coba lagi.");
-            },
-            onClose: function() {
-                alert("Anda menutup popup pembayaran tanpa menyelesaikannya.");
-            }
-        });
-    };
+   document.getElementById('pay-button').onclick = function () {
+    snap.pay('{{ $snapToken }}', {
+        onSuccess: function(result) {
+            console.log(result);
+
+            // memperbarui status 
+            fetch('/payment/update-status', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}', 
+                },
+                body: JSON.stringify({
+                    transaction_id: '{{ $transaction->id }}' 
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    alert("Pembayaran berhasil! " + data.message);
+                    window.location.href = "/payment/success";
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Terjadi kesalahan saat memperbarui status pembayaran.");
+            });
+        },
+        onPending: function(result) {
+            console.log(result);
+            alert("Pembayaran tertunda, silakan cek status pembayaran.");
+            window.location.href = "/payment/pending";
+        },
+        onError: function(result) {
+            console.log(result);
+            alert("Pembayaran gagal, silakan coba lagi.");
+        },
+        onClose: function() {
+            alert("Anda menutup popup pembayaran tanpa menyelesaikannya.");
+        }
+    });
+};
+
 </script>
 @endsection
